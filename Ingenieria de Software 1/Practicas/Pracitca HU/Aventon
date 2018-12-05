@@ -1,0 +1,133 @@
+ID Registrar
+titulo como persona me quiero poder registrar para abaratar costos en los viajes
+R de N
+	no debe haber dos correos electronicos iguales
+
+Esc 1: Registro exitoso
+	Dado una persona con mail valido"valido@mail.com" y nombre de usuario valido "Robertito" que no fue registrada
+	cuando ingresa los datos para registrarse 
+	entonces el sistema lo registra correctametne, marca el mail como usado y informa
+Esc 2: Mail repetido
+	dado una persona que utiliza un mail "xxasdx@gemail.com" que ya fue registrado
+	cuando intenta registrarse
+	entocnes el sistema informa que el mail ya esta en uso
+Esc 3: nombre usuario repetido
+	Dado una persona "juan perez" con nombre de usuario "juan" repetido
+	cuando intenta registrarse 
+	Entonces el sistema le informa que el nombre de usuario "juan" no se encuentra disponible
+--------------------------------------------------------------------------------------------------
+ID Login
+titulo como persona registrada quiero autentificarme para poder publicar los datos
+R de N
+	email registrado
+	contraseña valida
+
+Esc 1: login exitoso
+	dado una persona con email "robertito@mail.com" y contraseña "******" validos
+	cuando se logea
+	entonces el sistema lo confirma e informa que ha sido logeado
+Esc 2: email incorrecto
+	dado una persona con email "luis@mail.com" incorrecto
+	cuando intenta logearse
+	entonces el sistema le informa que el mail no estaba registrado
+Esc 3: contraseña invalida
+	Dado una persona con mail valido y con contraseña "*****" invalida
+	cuando intenta ingresar
+	entonces el sistema le informa que la contraseña es incorrecta
+--------------------------------------------------------------------------------------------------
+ID Cerrar sesion
+titulo como usuario autentificado quiero poder cerrar sesion para....
+
+R de N
+Esc 1: sesion cerrada
+	dado un usuario 
+	cuando quiere cerrar sesion
+	entonces el sistema cierra sesion e informa
+--------------------------------------------------------------------------------------------------
+ID Publicar viaje
+Titulo como usuario autentificado quiero poder publicar viajes para abaratar el costo
+R de N
+	Diferentes viajes no deben superponerse
+	usuario adeuda calificacion no podra publicar
+
+Esc 1: publicacion exitosa
+	Dado un usuario "Robertito" que realiza un viaje a jujuy en 11/10/2018 a las 00:00 sin adeudar calificaciones 
+	Cuando el usuario registra/ publica dicho viaje 
+	Enontces el sistema informa que la publiacion fue exitosa
+Esc 2: adeuda calificaciones
+	dado un usuario "hernan" que adeuda calificaciones
+	cuando inteta registrar el viaje
+	Entonces el sistema le informa que debe calificaciones y no publica el viaje
+Esc 3: fechas superpuestas
+	Dado un usuario que ya tiene un viaje para la fecha 10/12/2018
+	Cuando intenta publicar el nuevo viaje para la fecha 10/12/2018
+	Entnces el sistema le informa que para la esa fecha ya posee un viaje, no registra el viaje
+Esc 4 validar fecha
+	Dado un usuario que quiere publicar un viaje para 9/9/2018 en el dia 10/9/2018
+	Cuando quiere cargar el viaje
+	Entonces el sistema le informa que la fecha no es valida
+--------------------------------------------------------------------------------------------------
+ID Calificar Piloto
+Titulo Como usuario (piloto o copiloto) quiero calificar a otro usuario para no adeudar calificaciones
+
+Esc 1: Calificacion positiva exitosa
+	Dado un co-piloto "pepe" del viaje a mdq en 21/1/2018
+	Cuando califica a el piloto "juan" de forma positiva
+	Entonces el sistema guarda la calificacion, le sube la reputacion
+Esc 1: Calificacion negativa exitosa
+	Dado un co-piloto "rodolfo" del viaje a salta en 21/1/2018
+	Cuando califica a el piloto "pablo" de forma negativa
+	Entonces el sistema guarda la calificacion, le baja la reputacion
+Esc 2: No es Copiloto
+	Dado una persona que no es Copiloto "cesar"
+	Cuando intenta calificar a un piloto "fernado" de otro viaje
+	Entonces el sistema le inforama que el no realizo ese viaje
+Esc Calificacion 2
+	dado un copiloto "erica" que ya realizo la calificacion del piloto "lucas"
+	cuando intenta calificar a "lucas"
+	Entonces el sistema informa que ya califico a ese piloto
+--------------------------------------------------------------------------------------------------
+ID Calificar Co-Piloto (no va)
+Titulo Como piloto quiero calificar a los co-pilotos para no adeudar calificaciones
+
+Esc 1: Calificacion exitosa
+	Dado un piloto valido
+	Cuando califica a los copilotos 
+	Entonces el sistema guarda la calificacion para que pueda ser consultada
+Esc 2: No es piloto
+	Dado una persona que no es piloto
+	Cuando intenta calificar a los copilotos
+	Entonces el sistema le inforama que no es piloto
+Esc 3: No son del mismo viaje
+	Dado un Piloto 
+	Cuando intenta calificar a los copilotos de otro viaje
+	Entonces el sistema le informa que no corresponde al mismo vieja que realizo
+Esc 4: No calificar dos veces
+	dado un piloto que ya realizo la calificacion del copiloto 
+	cuando intenta calificar
+	Entonces el sistema informa que ya califico a ese copiloto
+-------------------------------------------------------------------------------------------------
+ID Aceptar/Rechazar copilotos
+titulo como piloto quiero poder aceptar rechazar copilotos para poder (para abaratar costos)
+
+Esc 1: Aceptar con exito
+	dado un piloto con un viaje y con copilotos postulados
+	cuando acepta los copilotos
+	entones el sistema acepta a todos los copilotos aceptados (los marca como aceptados) e informandole a los copilotos
+Esc 2: Rechazar con exito
+	dado un piloto con viaje y con copilotos postulados
+	cuando rechaza a los copilotos
+	entonces el sistema no los marca como aceptados, informandole al piloto
+
+-------------------------------------------------------------------------------------------------
+ID Postuar para viaje
+titulo como copiloto quiero postularme en el viaje para poder abaratar costo
+
+Esc 1: Postulacion exitosa
+	Dado un copiloto 
+	cuando se postula para un viaje
+	entonces el sistema lo postula e informa que fue correcto
+Esc 2: No postularse 2 veces
+	dado un copiloto que ya se postulo para el viaje
+	cuando intenta postularse 
+	entonces el sistema no lo acepta e informa que ya estaba postulado

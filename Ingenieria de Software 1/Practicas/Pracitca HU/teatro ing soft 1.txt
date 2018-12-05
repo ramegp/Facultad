@@ -1,0 +1,110 @@
+ID Reserva de Entrada
+
+Esc 1 Reserva Exitosa
+	Dado: Un dni y nombre, una funcion con cupo disponible, con una anticipacion mayor a 3 horas, y la cantidad sea menor a 3
+	Cuando: El empleado carga los datos
+	Entonces: El sistema resta la cantidad de entradas y reserva las mismas
+Esc 2 Reserva mayor a 2
+	Dado: un dni xxxx que quiere reservar mas de 2 entradas
+	Cuando:El empleado registra los datos
+	Entonces: El sistema informa que supera la cantidad permitida
+Esc 3:No hay cupo
+	Dada: una funcion seleccionada sin cupo
+	Cuando: El empleado intenta reservar para esa funcion
+	Entonces: El sistema informa "no hay cupo disponible"
+Esc 4: Anticipacion menor 3hs
+	Dada: una funcion seleccionada con inicio dentro de <3hs
+	Cunado: El empleado intenta reservar para esa funcion
+	Entonces: El sistema informa que no es posible la reserva por inicio proximo
+
+ID Compra web
+
+Titulo Como cliente quiero comprar entradas para una funcion para nada
+
+R de N 
+	Poseer tarjeta de credito
+
+Esc 1 Compra exitosa
+	Dado: UN dni xx, una funcion con cupo disponible, una cantidad de lugares soliitados y una tarjeta  valida
+	Cuando: El cliente carga los datos para la compra
+	Entonces: El sistema le emite un codigo de compra para retirar las entradas
+Esc 2 No hay cupo
+	Dado un dni que quiere seleccionar mas entradas que el cupo disponible de la funcion
+	Cuando el cliente carga los datos para reservar
+	Entonces El sistema le informa que excede el cupo
+Esc 3 Tarjeta invalida
+	Dados datos de tarjeta de credito invalidos
+	Cuando El cliente ingresa los datos
+	Entonces el sistema le informa que no es una tarjeta valida
+Esc 4 Conexion con banco fallida
+	Dados datos para compra web
+	Cuando El sistema intenta conectarse con el banco y la conexion falla
+	Entonces El sistema informa que la conexion no pudo establecerse
+
+ID Vender Personalmente
+
+Titulo como empleado quiero vender entradas para poder recaudar dinero
+
+R de N
+	Cliente tenga tarjeta de credito
+
+Esc 1 Venta exitosa
+	Dado: un cliente con datos de una funcion correcta, con tarjeta de credito valida
+	Cuando: el empleado carga la venta de entradas y cobra por el pago
+	Entonces: el sistema reserva los lugares e imprime las entradas
+
+Esc 2 Sin tarjeta
+	Dado: un cliente que elige una funcion correcta pero sin tarjeta de credito
+	Cuando: el empleado ingresa los datos de la tarjeta
+	Entonces: el sistema informa que la tarjeta no es valida y no se reservan los lugares
+Esc 3 Funcion invalida
+	Dado: un cliente que elige una funcion que no existe
+	Cuando: el empleado busca la funcion para realizar la reserva de lugares
+	Entonces: el sistema le informa que no existe dicha funcion
+
+ID Entrega de entradas reservadas
+
+Titulo como empleado quiero entregar las entradas para poder...
+
+R de N
+	Pagos se realizan unicamente con tarjeta
+
+Esc 1 Entrega exitosa
+	Dado un cliente con dni xxx, sin entradas caducadas (menos de 3hs) y con tarjeta valida
+	Cuando el empleado carga los datos
+	Entonces: el sistema verifica que la persona tiene entradas reservadas que no estan caducadas y procede a cobrar para luego descontar los lugares y entregar la entrada
+Esc 2 No posee entradas reservadas
+	Dado un cliente dni xxx, sin entradas reservadas 
+	Cuando el empleado carga los datos 
+	Entonces el sistema le informa que el cliente no posee entradas reservadas.
+Esc 3 Caduco
+	Dado un cliente con dni xxxx,con entradas reservadas pero menos de 3hs de inicio de la funcion
+	Cuando el empleado carga los datos 
+	Entonces El sistema informa que las entradas han caducado y las retira del sistema.
+Esc 4 tarjeta invalida
+	Dado un cliente con una reserva de eentradas correcta pero con una tarjeta invalida
+	Cuando el empleado carga los datos de la tarjeta 
+	Entonces el sistema le informa que la tarjeta es invalida.
+Esc 5 falla conexion 
+
+ID Retirar Entrada
+
+Titulo como empleado quiero entregar las entradas con codigo de compra para poder...
+
+R de N 
+	poseer codigo de compra
+
+Esc 1 Retiro exitoso
+	Dado: un codigo de compra valido
+	Cuando el empleado ingresa el codigo
+	Entonces el sistema verifica que es valido, imprime las entradas y marca como invalido el codigo para no reutilizarlo
+
+Esc 2 Codigo invalido
+	Dado un codigo de compra invalido
+	Cuando el empleado carga el codigo
+	Entonces el sistema informa que es invalido el codigo
+
+ID Administrar Salas
+
+Titulo Como administrador quiero poder administrar las salas para vender entradas
+

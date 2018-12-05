@@ -1,0 +1,206 @@
+					Metodologías Ágiles
+Es un enfoque iterativo e incremental (evolutivo) de desarrollo de software” 
+El desarrollo iterativo es una estrategia de reproceso en la que el tiempo se separa para revisar y mejorar partes del sistema.
+incremental es una estrategia programada y en etapas, en la que las diferentes partes del sistema se desarrollan en diferentes momentos o a diferentes velocidades, y se integran a medida que se completan
+Obejtivos:
+	Producir software de alta calidad con un costo efectivo  y en el tiempo apropiado.
+	Esbozar los valores y principios que deberían permitir a los equipos desarrollar software 		rápidamente y respondiendo a los cambios que puedan surgir a lo largo del proyecto.
+	Ofrecer una alternativa a los procesos de desarrollo de software tradicionales, caracterizados 		por ser rígidos y dirigidos por la documentación que se genera en cada una de las actividades 		desarrolladas.
+
+Una Metodología Ágil es aquella en la que “se da prioridad a las tareas que dan resultados directos y que reducen la burocracia tanto como sea posible” [Fowler], adaptándose al cambio de los proyectos.
+
+Principios Desarrollo agil de software
+	1) Nuestra mayor prioridad es satisfacer al cliente a través de fáciles y continuas entregas de 	software valuable.
+	2)Los cambios de requerimientos son bienvenidos, aún tardíos, en el desarrollo. Los procesos 		Ágiles capturan los cambios para que el cliente obtenga ventajas competitivas.
+	3)Entregas frecuentes de software, desde un par de semanas a un par de meses, con el menor 		intervalo de tiempo posible entre una entrega y la siguiente.
+	4)Usuarios y desarrolladores deben trabajar juntos durante todo el proyecto. 
+	5)Construir proyectos alrededor de motivaciones individuales.
+	6)Darles el ambiente y el soporte que ellos necesitan y confiar el trabajo dado. El diálogo cara 		a cara es el método más eficiente y efectivo de intercambiar información entre el equipo de  		desarrolladores. 
+	7)El software que funciona es la medida clave de progreso.
+	8)Los procesos ágiles promueven un desarrollo sostenible. Los stakeholders, desarrolladores y 		usuarios deberían ser capaces  de mantener un paso constante indefinidamente.
+    	9)Atención continua a la excelencia técnica y buen diseño incrementa la agilidad.
+	10)Simplicidad (el arte de maximizar la cantidad de trabajo no dado) es esencial.
+	11)Las mejores arquitecturas, requerimientos y diseños surgen de la propia organización de los 		equipos.
+	12)A intervalos regulares, el equipo reflexiona sobre cómo volverse más efectivo, entonces afina 		y ajusta su comportamiento en consecuencia.
+
+Desventajas
+	Aunque es atractiva la idea de involucrar al cliente en el proceso de desarrollo, los 		representantes del cliente están sujetos a otras presiones, y no intervienen por completo en el desarrollo del software.
+	Priorizar los cambios podría ser difícil, sobre todo en sistemas donde existen muchos participantes. Cada uno por lo general ofrece diversas prioridades a diferentes cambios.
+ 	Mantener la simplicidad requiere trabajo adicional.
+ 	Muchas organizaciones, especialmente las grandes compañías, pasan años cambiando su cultura, de tal modo que los procesos se definan y continúen. Para ellas, resulta difícil moverse hacia un modelo de trabajo donde los procesos sean informales y estén definidos por equipos de desarrollo.
+
+
+Principales AMs
+
+eXtreme Programming
+	Desarrollo iterativo e incremental: pequeñas mejoras, unas tras otras.	
+	Pruebas unitarias continuas, frecuentemente repetidas y automatizadas.
+	Programación en parejas.
+	Frecuente integración del equipo de programación con el cliente o usuario. 
+	Corrección de todos los errores antes de añadir nueva funcionalidad. 
+	Refactorización del código
+	Propiedad del código compartida
+	Simplicidad en el código
+
+principios basicos
+	Simplicidad.
+	Comunicacion.
+	Retroalimentacion
+	Coraje
+
+Las características esenciales :
+ 
+	Historias de usuario
+	Roles
+		Programador (Programmer)
+			Responsable de decisiones técnicas
+			Responsable de construir el sistema
+			Sin distinción entre analistas, diseñadores o codificadores
+			En XP, los programadores diseñan, programan y realizan las pruebas
+
+		Jefe de Proyecto (Manager)
+			Organiza y guía las reuniones
+			Asegura condiciones adecuadas para el proyecto
+
+		Cliente (Customer)
+			Es parte del equipo
+			Determina qué construir y cuándo
+			Establece las pruebas funcionales 
+		
+		Entrenador (Coach)
+			Responsable del proceso
+			Tiende a estar en un segundo plano a medida que el equipo madura
+
+		Encargado de Pruebas (Tester) 
+			Ayuda al cliente con las pruebas funcionales
+			Se asegura de que las pruebas funcionales se superan
+
+		Rastreador (Tracker)
+			Metric Man
+			Observa sin molestar
+			Conserva datos históricos
+
+	Proceso 
+		El ciclo de vida consiste en:
+
+			Exploración
+				Los clientes plantean las historias de usuario que son de interés para la 					primera entrega del producto.
+				El equipo de desarrollo se familiariza con las herramientas, tecnologías 					y prácticas que se utilizarán en el proyecto.
+				Se construye un prototipo
+ 
+			Planificación
+				El cliente establece la prioridad de cada historia de usuario.
+				Los programadores realizan una estimación del esfuerzo.
+ 				Se toman acuerdos sobre el contenido de la primera entrega y se determina 					un cronograma en conjunto con el cliente.
+
+			Iteraciones
+				El Plan de Entrega está compuesto por iteraciones de no más de tres 					semanas. 
+				El cliente es quien decide qué historias se implementarán en cada 					iteración
+				Al final de la última iteración el sistema estará listo para entrar en 					producción.
+
+			Producción
+				Esta fase requiere de pruebas adicionales  y revisiones de rendimiento 					antes de que el sistema sea trasladado al entorno del cliente.
+
+			Mantenimiento
+				Mientras la primera versión se encuentra en producción, el proyecto XP 					debe mantener el sistema en funcionamiento al mismo tiempo que desarrolla 					nuevas iteraciones. 
+				La fase de mantenimiento puede requerir nuevo personal dentro del equipo 					y cambios en su estructura.
+
+			Muerte
+				Es cuando el cliente no tiene más historias para ser incluidas en el 					sistema. 
+				Se genera la documentación final del sistema.
+				cuando el sistema no genera los beneficios esperados por el cliente o 					cuando no hay presupuesto para mantenerlo.
+
+	Prácticas
+		Testing: 
+			Los programadores continuamente escriben pruebas unitarias, las cuales deben 				correr sin problemas para que el desarrollo continúe. 
+			Los clientes escriben pruebas demostrando que las funcionalidades están 			terminadas.
+
+ 		Refactoring: 
+			objetivo de remover duplicación de código, simplificarlo 				y hacerlo más flexible para facilitar los posteriores cambios.
+
+		Programación de a Pares: 
+			Todo el código de producción es escrito por dos programadores en una máquina.
+
+		Propiedad Colectiva del Código: 
+			Cualquiera puede cambiar código en cualquier parte del sistema.
+			Motiva a contribuir con nuevas ideas, evitando a la vez que algún programador sea 				imprescindible.
+
+		Integración Continua: 
+			Cada pieza de código es integrada en el sistema una vez que esté lista. Así, el 			sistema puede llegar a ser integrado y construido varias veces en un mismo día.
+			Reduce la fragmentación de los esfuerzos de los desarrolladores por falta de 				comunicación sobre lo que puede ser reutilizado o compartido.
+
+		Semana de 40-horas: 
+			máximo de 40 horas por semana.
+			Los proyectos que requieren trabajo extra para intentar cumplir con los plazos 				suelen al final ser entregados con retraso. En lugar de esto se puede realizar el 				juego de la planificación para cambiar el ámbito del proyecto o la fecha de 				entrega.
+
+		Cliente en el Lugar de Desarrollo: 
+			El cliente tiene que estar presente y disponible todo el tiempo para el equipo.
+
+ 		Estándares de Codificación: 
+			Los programadores escriben todo el código de acuerdo con reglas que enfatizan la 				comunicación a través del mismo.
+
+
+SCRUM
+	principios
+		Eliminar el desperdicio: no perder el tiempo haciendo cosas que no le suman valor al 			cliente. 
+		Construir la calidad con el producto: la idea es inyectar la calidad directamente en el 		código desde el inicio.
+		Crear conocimiento: En la práctica no se puede tener el conocimiento antes de empezar el 			desarrollo.
+		Diferir las decisiones: tomar las decisiones en el momento adecuado, esperar hasta ese 			momento, ya que uno tiene mas información a medida que va pasando el tiempo. Si se puede 			esperar, mejor.
+		Entregar rápido: Debe ser una de las ventajas competitivas más  importantes.
+		Respetar a las personas: la gente trabaja mejor cuando se encuentra en un ambiente que la 			motive y se sienta respetada.
+		Optimizar el todo: optimizar todo el proceso, ya que el proceso es una unidad, y para 			lograr tener éxito y avanzar, hay que tratarlo como tal.
+
+	roles
+		El Product Owner (Propietario) conoce y marca las prioridades del proyecto o producto.
+
+		El Scrum Master (Jefe) es la persona que asegura el seguimiento de la metodología guiando 			las reuniones y ayudando al equipo ante cualquier problema que pueda aparecer. Su 			responsabilidad es entre otras, la de hacer de paraguas ante las presiones externas.
+
+		El Scrum Team (Equipo) son las personas responsables de implementar 
+		la funcionalidad o funcionalidades elegidas por el Product Owner.
+
+		Los Usuarios o Cliente, son los beneficiarios finales del producto, y son 
+		quienes viendo los progresos, pueden aportar ideas, sugerencias o 
+		necesidades.
+
+	artefactos
+		Product Backlog: es la lista maestra que contiene toda la funcionalidad deseada en el 			producto, ordenada por un orden de prioridad.
+
+		Sprint Backlog: es la lista que contiene toda la funcionalidad que el equipo se 		comprometió a desarrollar durante un Sprint determinado.
+
+		Burndown Chart: muestra un acumulativo del trabajo hecho, día-a-día.
+
+	cuando usar scrum?
+		Scrum está pensado para ser aplicado en proyectos en donde el “caos” es una constante, 			aquellos proyectos en los que tenemos requerimientos dinámicos, y que tenemos que 			implementar tecnología de punta.
+
+El Desarrollo de Software Basado en Modelos. (MBD)
+
+	El adjetivo «dirigido» en MDD, a diferencia de «basado», enfatiza que este paradigma asigna a los 		modelos un rol central y activo: son al menos tan importantes como el código fuente.
+
+	Model Driven Development (MDD) promueve enfatizar los siguientes puntos claves:
+	Mayor nivel de abstracción en la especificación tanto del problema a resolver como de la solución 		correspondiente.
+	Aumento de confianza en la automatización asistida por computadora para soportar el análisis, el 		diseño y la ejecución. 
+	Uso de estándares industriales como medio para facilitar las comunicaciones, la interacción entre 		diferentes aplicaciones y productos, y la especialización tecnológica. 
+	Los modelos son los conductores primarios en todos los aspectos del desarrollo de software.
+
+	Platform Independent Model (PIM): “Un modelo de un sistema que no contiene información acerca de 		la plataforma o la tecnología que es usada para implementarlo”
+	
+	Platform Specific Model (PSM): “Un modelo de un sistema que incluye información acerca de la 		tecnología específica que se usará para su implementación sobre  una plataforma específica”
+
+	Transformación de modelos: “Especifica el proceso de conversión de un modelo en otro modelo del 	mismo sistema.”
+	Cada transformación incluye (al menos):
+		un PIM, 
+		un Modelo de la Plataforma, 
+		una Transformación, y 
+		un PSM
+
+	beneficios
+		Incremento en la productividad (modelos y transformaciones).
+		Adaptación a los cambios tecnológicos.
+		Adaptación a los cambios de requisitos.  
+		Consistencia (automatización).
+		Re-uso (de modelos y transformaciones).
+		Mejoras en la comunicación con los usuarios y la comunicación entre los desarrolladores 		(los modelos permanecen actualizados).
+		Captura de la experiencia (cambio de experto).
+		Los modelos son productos de larga duración (resisten cambios).
+		Posibilidad de demorar decisiones tecnológicas
+

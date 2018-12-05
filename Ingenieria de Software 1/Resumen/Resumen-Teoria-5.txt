@@ -1,0 +1,29 @@
+Técnicas de Especificación de Requerimientos
+Dinámicas
+Utilizadas para especificar sistemas de tiempo real en los que son necesarios representar aspectos de concurrencia.
+Los sistemas concurrentes se diseñan para permitir la ejecución simultánea de componentes de programación, llamadas tareas o procesos, en varios procesadores o intercalados en un solo procesador.
+Las tareas concurrentes deben estar sincronizadas para permitir la comunicación entre ellas (pueden operar a distintas velocidades, deben prevenir la modificación de datos compartidos o condiciones de bloqueo).
+Pueden realizarse varias tareas en paralelo, pero son ejecutados en un orden impredecible.
+Éstas NO son secuenciales.
+La ejecución de una Red de Petri se realiza disparando transiciones habilitadas. 
+Una transición está habilitada cuando cada lugar de entrada tiene al menos tantos tokens como arcos hacia la transición. 
+Disparar una transición habilitada implica remover tokens de los lugares de entrada y distribuir tokens en los lugares de salida (teniendo en cuenta la cantidad de arcos que llegan y la cantidad de arcos que salen de la transición).
+Las RP son asincrónicas y el orden en que ocurren los eventos es uno de los permitidos 
+La ejecución es NO DETERMINÍSTICA 
+Se acepta que el disparo de una transición es instantáneo.
+
+
+Técnicas de Especificación de Requerimientos Dinámicas
+Tablas de Decisión 
+Es una herramienta que permite presentar de forma concisa las reglas lógicas que hay que utilizar para decidir acciones a ejecutar en función de las condiciones y la lógica de decisión de un problema específico.
+Describe el sistema como un conjunto de:
+Posibles CONDICIONES satisfechas por el sistema en un momento dado
+REGLAS para reaccionar ante los estímulos que ocurren cuando se reúnen determinados conjuntos de condiciones y 
+ACCIONES a ser tomadas como un resultado.
+Especificaciones completas
+Aquellas que determinan acciones (una o varias) para todas las reglas posibles.
+Especificaciones redundantes
+Aquellas que marcan para reglas que determinan las mismas condiciones acciones iguales.     
+Especificaciones contradictorias
+Aquellas que especifican para reglas que determinan las mismas condiciones acciones distintas.
+

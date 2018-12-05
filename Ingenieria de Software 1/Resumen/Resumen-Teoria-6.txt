@@ -1,0 +1,166 @@
+Análisis Estructurado – Objetivos y estructura
+El modelo de análisis debe lograr tres objetivos primarios:
+1)describir lo que requiere el cliente
+2)establecer una base para la creación de un diseño de Software
+3)definir un conjunto de requisitos que se pueda validar una vez que se construye el software
+
+Modelado de funciones del sistema
+Diagrama de Flujo de Datos (DFD)
+Es una herramienta que permite visualizar un sistema como una red de procesos funcionales, conectados entre sí por “conductos” y almacenamientos de datos.
+
+Representa la transformación de entradas a salidas y es también llamado diagrama de burbujas.
+Es una herramienta comúnmente utilizada por sistemas operacionales en los cuales las funciones del sistema son de gran importancia y son más complejas que los datos que éste maneja.
+
+Se utiliza un rectángulo para representar una entidad externa, esto es, un elemento del sistema (por ejemplo, un elemento hardware, una persona, otro programa) u otro sistema que produce información para ser transformada por el software, o recibe información producida por el software. 
+
+Un círculo (también llamado burbuja)  representa un proceso o transformación que es aplicado a los datos (o al control) y los modifica. 
+
+Una flecha representa uno o más elementos de datos (objetos de dato).
+
+Análisis Estructurado – Diccionario de Datos
+Listado organizado de todos los datos pertinentes al sistema. Es una definición sin ambigüedad de los datos y elementos del sistema
+Características:
+Permite revisar consistencia
+Representa el contenido de la información
+Define el significado de los flujos y los almacenes
+Un Dato debe contener 
+	Tipo 
+	Nombre 
+	Descripción
+
+
+Modelo Esencial
+Debe indicarse lo que el sistema debe hacer para satisfacer los requerimientos del usuario, con una mínima (en lo posible nula) explicación de cómo lo hace.
+Pensar el modelo esencial "suponiendo que se dispone de tecnología perfecta", lo que permite que sobreviva cambios tecnológicos.
+Al modelo esencial lo componen:
+1- Modelo Ambiental
+	Define las interfaces entre el sistema y el ambiente donde el mismo se ejecuta.
+	La construcción de un modelo ambiental es lo primero y más importante en la construcción del 		modelo de requerimientos del usuario para el nuevo sistema
+	Pero a medida que encaramos un proyecto mayor, hay cientos de flujos, decenas de terminadores y 	la lista de acontecimientos crece y es difícil de manejarla.
+	Una vez concluido el modelo ambiental hay que chequearlo con los usuarios clave y con el grupo de 	  análisis.
+
+	1.1 DECLARACIÓN DE PROPÓSITOS
+	En forma sintética (1 párrafo con 2 o 3 frases) debe indicarse el objetivo del sistema, de que es 		responsable el sistema
+
+	1.2 DIAGRAMA DE CONTEXTO
+	Es un caso especial de DFD donde el sistema se representa en una sola burbuja vinculada con las 	entidades externas y los almacenamientos externos
+
+	1.3 LISTA DE ACONTECIMIENTOS
+	Se trata de un listado de eventos (”estímulos") a los que el sistema debe responder.
+	Tipos de Acontecimientos
+	Flujo (F): llega algún o algunos datos al sistema
+	Temporales (T): comienzan con la llegada de un momento dado en el tiempo.
+	Control (C).  
+
+2- Modelo de comportamiento
+	El modelo de comportamiento es la representación del comportamiento final que el sistema debe 		tener para manejar con éxito el ambiente, dentro de las especificaciones requeridas por el 		usuario.
+	Contiene:
+	Un diagrama preliminar de flujo de datos del sistema (DFD):
+		Nivelación de un DFD
+		A partir del DFD preliminar se realizan nivelaciones
+		Ascendentes 
+			Agrupa las burbujas con algún criterio.
+			Tiene una utilidad de presentación al usuario.
+			El DFD preliminar tiene un proceso por cada acontecimiento
+			El proceso de nivelación ascendente tiende a agrupar las burbujas con algún 				criterio:
+			Utilizando el principio de “ocultamiento de la información” agrupa los procesos 			que acceden al mismo almacenamiento.
+		Descendentes 
+			Descompone las burbujas funcionalmente
+			Esto se logra produciendo una descomposición funcional de las burbujas.
+			Las burbujas que no tienen más explosiones son las “burbujas primitivas”
+
+	Un diagrama preliminar de entidad-relación (DER)
+	Una primer versión del diccionario de datos (DD)
+	Un diagrama de transición de estados (DTE)
+
+					MODELOS DE PROCESO
+Proceso
+	Es un conjunto de actividades y resultados asociados que producen un producto de software.
+
+Modelo de proceso de software
+	Es una representación simplificada de un proceso de software que presenta una visión de ese 		proceso.
+	Estos modelos pueden incluir actividades que son partes de los procesos y productos de software, 	y el papel de las personas involucradas.
+
+	Características:
+		Establece todas las actividades.
+		Utiliza recursos, está sujeto a restricciones y genera productos intermedios y finales.
+		Puede estar compuesto por subprocesos.
+		Cada actividad tiene entradas y salidas definidas.
+		Las actividades se organizan en una secuencia.
+		Existen principios que orientan sobre las metas de cada actividad.
+		Las restricciones pueden aplicarse a una actividad, recurso o producto.
+	
+	Ciclo de vida 
+		Proceso que implica la construcción de un producto
+	Ciclo de vida del Software
+		Describe la vida del producto de software desde su concepción hasta su implementación, 		entrega, utilización y mantenimiento
+
+Modelos prescriptivos
+	Prescriben un conjunto de elementos del proceso: actividades del marco de trabajo, acciones de la 		ingeniería del software, tareas, aseguramiento de la calidad y mecanismos de control.
+	Cada modelo de proceso prescribe también un “flujo de trabajo”, es decir de qué forma los 		elementos del 	proceso se interrelacionan entre sí.
+Modelos descriptivos
+	Descripción en la forma en que se realizan en la realidad
+
+Modelo en Cascada
+
+	Las etapas se representan cayendo en cascada
+	Cada etapa de desarrollo se debe completar antes que comience la siguiente 
+	Su simplicidad hace que sea fácil explicarlo a los clientes
+	
+	Dificultades:
+		No existen resultados concretos hasta que todo este terminado.
+		Las fallas más triviales se encuentran al comienzo del período de prueba y las más graves 			al final.
+		La eliminación de fallas suele ser extremadamente difícil durante las últimas etapas de 		prueba del sistema.
+		La necesidad de pruebas aumenta exponencialmente durante las etapas finales.
+		"CONGELAR" una fase es poco realista.
+
+Modelo en V
+
+	Demuestra cómo se relacionan las actividades de prueba con las de análisis y diseño.
+	Sugiere que la prueba unitaria y de integración también sea utilizada para verificar el diseño 		del programa
+	La vinculación entre los lados derecho e izquierdo implica que, si se encuentran problemas 		durante la verificación y validación, entonces el lado izquierdo de la V puede ser ejecutado 		nuevamente para solucionar el problema
+
+Modelo de Prototipos
+
+	Un prototipo es un producto parcialmente desarrollado que permite que clientes y desarrolladores 	examinen algunos aspectos del sistema propuesto, y decidan si éste es adecuado o correcto para el 	producto terminado 
+	Tipos Evolutivos
+		El objetivo es obtener el sistema a entregar.
+		Permite que todo el sistema o alguna de sus partes se construyan rápidamente para 			comprender o aclarar aspectos y asegurar que el desarrollador, el usuario y el cliente 			tengan una comprensión unificada tanto de lo que se necesita como de lo que se propone 			como solución
+
+	Descartables 
+		No tiene funcionalidad
+		Se utilizan herramientas de modelado 
+
+	Para asegurar el éxito
+		Debe ser un sistema con el que se pueda experimentar
+		Debe ser comparativamente barato (< 10%)
+		Debe desarrollarse rápidamente
+		Énfasis en la interfaz de usuario
+		Equipo de desarrollo reducido
+		Herramientas y lenguajes adecuados
+
+Desarrollo por fases
+
+	Se desarrolla el sistema de tal manera que puede ser entregado en piezas. Esto implica que 		existen dos sistemas funcionando en paralelo:
+	el sistema operacional y el sistema en desarrollo.
+
+	Tipos de modelos de desarrollo por fases
+	Incremental
+		El sistema es particionado en subsistemas de acuerdo con su funcionalidad. Cada entrega 		agrega un subsistema.
+
+	Iterativo
+		Entrega un sistema completo desde el principio y luego aumenta la funcionalidad de cada 		subsistema con las nuevas versiones.	
+
+El modelo espiral
+
+	Combina las actividades de desarrollo con la gestión del riesgo 
+	Trata de mejorar los ciclos de vida clásicos y prototipos.
+	Incorpora objetivos de calidad 
+	Elimina errores y alternativas no atractivas al comienzo
+	Permite iteraciones, vuelta atrás y finalizaciones rápidas
+	Cada ciclo empieza identificando:
+		Los objetivos de la porción correspondiente
+		Las alternativas
+		Restricciones
+	Cada ciclo se completa con una revisión que incluye todo el ciclo anterior y el plan para el 		siguiente
+

@@ -1,0 +1,67 @@
+
+---------------------------------------------------------------------------------------------------
+ID Cobrar Factura
+
+Titulo como empleado quiero cobrar facturas para...
+
+R de N
+
+esc 1 Cobro exitoso
+	Dado un codigo de pago electronico correcto, con conexion exitosa y con verificacion de vencimiento hecha
+	Cuadno el empleado carga el codigo de pago
+	encotonces el sistema registra el pago, guardando los datos.
+Esc 2 Sin conexion
+	Dado un codigo correcto, sin conexion con la central
+	cuando el empleado ingresa el codigo para recuperar los datos
+	Entonces el sistema le informa que hay una falla en la conexion y no es posible realizar el cobro
+Esc 3 Codigo incorrecto
+	Dado un codigo incorrecto de pago electronico
+	Cuando el empleado carga el codigo
+	Entonces el sistema le informa que dicho codigo no es correcto
+----------------------------------------------------------------------------------------------------
+ID Registrar Pagos
+
+Titulo como gerente quiero registrar los pagos de los clientes para tener un control de ellos
+
+R de N
+	1 sola vez al dia se registran los pagos
+	Clave maestra
+
+Esc 1 Registro exitoso
+	Dado: una clave maestra correcta, que no se hizo el registro de los pagos en el dia, con conexion con la central
+	Cuando la centrar confirma la recepcion exitosa
+	Entonces el sistema las registra como enviada 
+Esc 2 Clave incorrecta
+	Dado una clave maestra incorrecta
+	Cuando el gerente ingresa la clave
+	Entonces el sistema le informa que dicha clave es incorrecta
+Esc 3 Ya hubo otro registro en la misma fecha
+	Dado una clave maestra, con conexion con la central pero con registro de enviado ya registrado
+	Cuando el gerente quiere enviar las transacciones 
+	Entonces el sistema verifica que ya hubo un registro el mismo dia e informa que no se puede realizar 
+Esc 4 Falla conexion con la central
+	Dado una clave maestra correcta, sin registros en la fecha pero sin conexion con la central
+	Cuando se trata de conectar con la central
+	Entonces el sistema informa que hay una error en la conexion, y no registra que se realizo transaccion.
+-------------------------------------------------------------------------------------------------
+ID Consulta
+
+Titulo como gerente quiero consultar los pagos para poder realizar estadisticas
+R de N
+	rango de fechas
+
+Esc 1 consulta Exitosa
+	dado la clave maestra correcta, con conexion establecida con la central y fecha validas
+	cuando el gerente ingresa los datos para poder consultar
+	entonces el sistema le informa en pantalla los montos y cantidad de cobros por empresa
+
+Esc 2 fecha invalida
+	Dado una clave correcta, con conexion con la central pero fechas invalidas
+	Cuando el gerente ingresa los datos
+	Entonces el sistema le informa que la fechas no son correctas
+Esc 3 Clave invalida
+	Dado un clave invalida
+	Cuando el gerente ingresa la clave 
+	Enotnces el sistema informa el error de clave
+--------------------------------------------------------------------------------------------------
+
