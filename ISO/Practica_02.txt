@@ -1,0 +1,72 @@
+¿Qué es la shell? 
+
+El shell o intérprete de órdenes o intérprete de comandos es el programa informático que provee una interfaz de usuario para acceder a los servicios del sistema operativo. En el caso de linux basado en
+unix.
+
+Algunos interpretes de comandos de GNU/Linux
+Bourne Shell (sh)
+Bash
+ Korn Shell (ksh) 
+Zsh
+
+¿Que es fileSystem?
+
+El sistema de archivos o sistema de ficheros (del inglés file system) es el componente del sistema operativo encargado de administrar y facilitar el uso de las memorias periféricas, ya sean secundarias o terciarias.1​
+
+Sus principales funciones son la asignación de espacio a los archivos, la administración del espacio libre y del acceso a los datos resguardados. Estructuran la información guardada en un dispositivo de almacenamiento de datos o unidad de almacenamiento (normalmente un disco duro de una computadora), que luego será representada ya sea textual o gráficamente utilizando un gestor de archivos.
+
+La mayoría de los sistemas operativos manejan su propio sistema de archivos. 
+
+Una partición de disco, en mantenimiento, es el nombre genérico que recibe cada división presente en una sola unidad física de almacenamiento de datos. Toda partición tiene su propio sistema de archivos (formato); generalmente, casi cualquier sistema operativo interpreta, utiliza y manipula cada partición como un disco físico independiente, a pesar de que dichas particiones estén en un solo disco físico. 
+
+Existen distintos esquemas de particiones para la distribución de particiones en un disco. Los más conocidos y difundidos son MBR (Master Boot Record) y GPT (GUID Partition Table).
+
+Para poder contener datos, las particiones tienen que poseer un sistema de archivos. El espacio no asignado en un disco no es una partición, por lo que no puede tener un sistema de archivos. Existen múltiples sistemas de archivos con diferentes capacidades como: FAT, NTFS, FAT32, EXT2, EXT3, EXT4, Btrfs, FedFS, ReiserFS, Reiser4 u otros. 
+
+Es necesario tener en cuenta que solo las particiones primarias y lógicas pueden contener un sistema de archivos propio
+
+Partición primaria: Son las divisiones crudas o primarias del disco, solo puede haber 4 de éstas o 3 primarias y una extendida. Depende de una tabla de particiones. Un disco físico completamente formateado consiste, en realidad, de una partición primaria que ocupa todo el espacio del disco y posee un sistema de archivos. A este tipo de particiones, prácticamente cualquier sistema operativo puede detectarlas y asignarles una unidad, siempre y cuando el sistema operativo reconozca su formato (sistema de archivos).
+Partición extendida: También conocida como partición secundaria es otro tipo de partición que actúa como una partición primaria; sirve para contener múltiples unidades lógicas en su interior. Fue ideada para romper la limitación de 4 particiones primarias en un solo disco físico. Solo puede existir una partición de este tipo por disco, y solo sirve para contener particiones lógicas. Por lo tanto, es el único tipo de partición que no soporta un sistema de archivos directamente.
+Partición lógica: Ocupa una porción de la partición extendida o la totalidad de la misma, la cual se ha formateado con un tipo específico de sistema de archivos (FAT32, NTFS, ext2,...) y se le ha asignado una unidad, así el sistema operativo reconoce las particiones lógicas o su sistema de archivos. Puede haber un máximo de 32 particiones lógicas en una partición extendida. Linux impone un máximo de 15, incluyendo las 4 primarias, en discos SCSI y en discos IDE 8963.
+
+Algunos sistemas de archivos (p. ej. versiones antiguas de sistemas FAT de Microsoft) tienen tamaños máximos más pequeños que los que el tamaño que proporciona un disco, siendo necesaria una partición de tamaño pequeño, para que sea posible el adecuado funcionamiento de este antiguo sistema de archivos.
+Se puede guardar una copia de seguridad de los datos del usuario en otra partición del mismo disco, para evitar la pérdida de información importante.
+En algunos sistemas operativos aconsejan más de una partición para funcionar, como por ejemplo, la partición de intercambio (swap) en los sistemas operativos basados en Linux.
+A menudo, dos sistemas operativos no pueden coexistir en la misma partición, o usar diferentes formatos de disco “nativo”. La unidad se particiona para diferentes sistemas operativos.
+Uno de los principales usos que se le suele dar a las particiones (principalmente a la extendida) es la de almacenar toda la información del usuario (entiéndase música, fotos, vídeos, documentos), para que al momento de reinstalar algún sistema operativo se formatee únicamente la unidad que lo contiene sin perder el resto de la información del usuario.
+
+BIOS   
+El firmware del BIOS es instalado dentro de la computadora personal (PC), y es el primer programa que se ejecuta cuando se enciende la computadora.
+
+El propósito fundamental del BIOS es iniciar y probar el hardware del sistema y cargar un gestor de arranque o un sistema operativo desde un dispositivo de almacenamiento de datos. Además, el BIOS provee una capa de abstracción para el hardware, por ejemplo, que consiste en una vía para que los programas de aplicaciones y los sistemas operativos interactúen con el teclado, el monitor y otros dispositivos de entrada/salida
+
+El software del BIOS es almacenado en un circuito integrado de memoria ROM no volátil en la placa base. Está específicamente diseñado para trabajar con cada modelo de computadora en particular, interconectando los diversos dispositivos que componen el conjunto de chips complementarios del sistema. En computadoras modernas, el BIOS está almacenado en una memoria flash, por lo que su contenido puede ser reescrito sin retirar el circuito integrado de la placa base. Esto permite que el BIOS sea fácil de actualizar para agregar nuevas características o corregir errores, pero puede hacer que la computadora sea vulnerable a los rootkit de BIOS. 
+
+UEFI
+
+es una especificación que define una interfaz entre el sistema operativo y el firmware. UEFI reemplaza la antigua interfaz del Sistema Básico de Entrada y Salida (BIOS) estándar presentado en las computadoras personales IBM PC como IBM PC ROM BIOS.
+
+La Interfaz de Firmware Extensible (EFI) fue desarrollada inicialmente por Intel en el 2002. La UEFI puede proporcionar menús gráficos adicionales e incluso proporcionar acceso remoto para la solución de problemas o mantenimiento. 
+
+Comandos
+
+mkdir [nombre de la carpeta] creamos una carpeta en el directorio que estamos parados
+cd [nombre carpeta] para ir navegando dentro del directorio
+ls nos dara una lista de todo lo que tenemos en el directorio que estamos parados.
+ls -l Listar todos los archivos (excepto los ocultos) del directorio actual, en formato detallado.
+ls -F Listar los archivos del directorio actual, indicando el tipo de archivo.
+pwd muestra la ruta del directorio actual.
+chmod cambiar el permiso de una carpeta o archivo.
+rm fichero Borrar el archivo o directorio denominado "fichero"
+rm -rf directorio Borrar el directorio denominado "directorio", incluyendo todos sus archivos y subdirectorios.
+cp fichero /home/datos/ Copiar el archivo o directorio denominado "fichero" al directorio "/home/datos".
+mv fichero /home/datos/ Mover el archivo o directorio denominado "fichero" al directorio "/home/datos".
+cat archivo Visualizar el archivo denominado "archivo".
+man -k palabraclave Visualizar todas las paginas de mantenimiento que contienen la palabra "palabraclave
+more archivo Visualizar el archivo denominado "archivo", una página a la vez. Para avanzar a la siguiente página se debe presionar la barra espaciadora.
+head archivo Visualizar las 10 primeras líneas del archivo denominado "archivo".
+head -20 archivo Visualizar las 20 primeras líneas del archivo denominado "archivo".
+tail -20 archivo Visualizar las 20 últimas líneas del archivo denominado "archivo". 
+lspci listar todos los componentes tipo pci (Peripheral Component Interconnec) como son las tarjetas de red, tarjetas de sonido o tarjetas de televisión
+at podemos ejecutar una acción determinada en el mes, día y hora que queramos
+

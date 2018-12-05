@@ -1,0 +1,84 @@
+test
+( EXPRESSION )          		EXPRESSION is true
+! EXPRESSION 				EXPRESSION is false
+EXPRESSION1 -a EXPRESSION2 		both EXPRESSION1 and EXPRESSION2 are true
+EXPRESSION1 -o EXPRESSION2 		either EXPRESSION1 or EXPRESSION2 is true
+-n STRING 				the length of STRING is nonzero
+STRING 	equivalent to -n STRING
+-z STRING 				the length of STRING is zero
+STRING1 = STRING2 			the strings are equal
+STRING1 != STRING2		 	the strings are not equal
+INTEGER1 -eq INTEGER2		 	INTEGER1 is equal to INTEGER2
+INTEGER1 -ge INTEGER2 			INTEGER1 is greater than or equal to INTEGER2
+INTEGER1 -gt INTEGER2 			INTEGER1 is greater than INTEGER2
+INTEGER1 -le INTEGER2 			INTEGER1 is less than or equal to INTEGER2
+INTEGER1 -lt INTEGER2 			INTEGER1 is less than INTEGER2
+INTEGER1 -ne INTEGER2 			INTEGER1 is not equal to INTEGER2
+FILE1 -ef FILE2 			FILE1 and FILE2 have the same device and inode numbers
+FILE1 -nt FILE2 			FILE1 is newer (modification date) than FILE2
+FILE1 -ot FILE2 			FILE1 is older than FILE2
+-b FILE 				FILE exists and is block special
+-c FILE 				FILE exists and is character special
+-d FILE 				FILE exists and is a directory
+-e FILE 				FILE exists
+-f FILE 				FILE exists and is a regular file
+-g FILE 				FILE exists and is set-group-ID
+-G FILE 				FILE exists and is owned by the effective group ID
+-h FILE 				FILE exists and is a symbolic link (same as -L)
+-k FILE 				FILE exists and has its sticky bit set
+-L FILE 				FILE exists and is a symbolic link (same as -h)
+-O FILE 				FILE exists and is owned by the effective user ID
+-p FILE 				FILE exists and is a named pipe
+-r FILE 				FILE exists and read permission is granted
+-s FILE 				FILE exists and has a size greater than zero
+-S FILE 				FILE exists and is a socket
+-t FD			       	    file descriptor FD is opened on a terminal
+-u FILE 				FILE exists and its set-user-ID bit is set
+-w FILE 				FILE exists and write permission is granted
+-x FILE 				FILE exists and execute (or search) permission is granted
+
+expr
+
+ARG1 | ARG2 				ARG1 if it is neither null nor 0, otherwise ARG2.
+ARG1 & ARG2 				ARG1 if neither argument is null or 0, otherwise 0.
+ARG1 < ARG2 				ARG1 is less than ARG2.
+ARG1 <= ARG2 				ARG1 is less than or equal to ARG2.
+ARG1 = ARG2 				ARG1 is equal to ARG2.
+ARG1 != ARG2 				ARG1 is unequal to ARG2.
+ARG1 >= ARG2 				ARG1 is greater than or equal to ARG2.
+ARG1 > ARG2 				ARG1 is greater than ARG2.
+ARG1 + ARG2 				arithmetic sum of ARG1 and ARG2.
+ARG1 - ARG2 				arithmetic difference of ARG1 and ARG2.
+ARG1 * ARG2 				arithmetic product of ARG1 and ARG2.
+ARG1 / ARG2 				arithmetic quotient of ARG1 divided by ARG2.
+ARG1 % ARG2 				arithmetic remainder of ARG1 divided by ARG2.
+STRING : REGEXP 			anchored pattern match of regular expression REGEXP in STRING.
+match STRING REGEXP 			same as STRING : REGEXP.
+substr STRING POS LENGTH 		substring of STRING, POS counted from 1.
+index STRING CHARS 			index in STRING where any CHARS is found, or 0.
+length STRING 				length of STRING.
++ TOKEN 				interpret TOKEN as a string, even if it is a keyword like 'match' or an operator like '/'.
+( EXPRESSION ) 				value of EXPRESSION.
+
+
+while expresion
+
+while [ condition ]
+do
+   command1
+   command2
+   command3
+done 
+
+x=1
+while [ $x -le 5 ]
+do
+  echo "Welcome $x times"
+  x=$(( $x + 1 ))
+done
+
+¿Qué tipo de variables existen? ¿Es shell script fuertemente tipado? ¿Se pueden definir
+arreglos? ¿Cómo?
+
+
+

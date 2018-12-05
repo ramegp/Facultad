@@ -1,0 +1,29 @@
+Los básicos son los siguientes:
+Tecla 	Función
+ESC 	Entra en modo normal
+i 	Entra en modo insert
+w 	Desplazamiento una palabra a la derecha
+b 	Desplazamiento una palabra a la izquierda
+H 	Desplazamiento a la parte superior de la pantalla
+L 	Desplazamiento a la parte inferior de la pantalla
+G 	Nos lleva hasta el final del documento
+0 	Nos lleva hasta el inicio del documento
+I 	Comienza a introducir el texto al inicio de la línea del cursor
+dd 	Corta la línea actual (estará disponible en el portapapeles)
+D 	Corta desde la posición actual del cursor hasta el final de la línea
+yy 	Copia al completo la línea donde se encuentra el cursor
+P 	Pega en la línea previa a la que nos encontremos el contenido del portapapeles
+p 	Pega el la línea siguiente a la nos encontremos el contenido del portapapeles
+. 	Repite el último comando (ideal cuando presionamos u por equivocación)
+u 	Deshace el último comando
+U 	Deshace el último comando aplicado a la línea donde se encuentre el cursor
+:/palabra 	Busca la palabra en el documento
+n 	Encuentra la siguiente palabra
+N 	Encuentra la palabra anterior:
+:buffers 	Muestra un listado de los ficheros abiertos en el momento de la solicitud y el estado en que se encuentran
+:w 	Guarda los cambios del buffer
+:! comando 	Ejecuta un comando bash.
+:wq 	Guarda y sale de VIM
+:q 	Sale de VIM
+:q! 	Fuerza la salida de VIM sin guardar cambios
+
