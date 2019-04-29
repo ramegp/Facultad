@@ -1,0 +1,22 @@
+Object subclass: #Cliente
+	instanceVariableNames: 'nombre apellido ventas'
+	classVariableNames: ''
+	package: 'Objetos1-Casa de cambio'
+
+agregarVenta: unaVenta
+	ventas add: unaVenta
+
+initialize
+
+	ventas := OrderedCollection new.
+	
+montoTotalDe: unaMoneda Entre: fechaInicio Y: fechaFin
+	^ ventas inject: 0 into: [ :total :venta | total + venta de: unaMoneda Entre: fechaInicio Y: fechaFin ]
+
+realizarVentaDe: unasTransacciones
+	| venta |
+	venta := Venta new.
+	venta agregarTransacciones: unasTransacciones.
+	self agregarVenta: venta
+
+

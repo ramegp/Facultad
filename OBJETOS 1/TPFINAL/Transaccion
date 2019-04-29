@@ -1,0 +1,18 @@
+Object subclass: #Transaccion
+	instanceVariableNames: 'monto moneda'
+	classVariableNames: ''
+	package: 'Objetos1-Casa de cambio'
+
+cuantoTenesDe: unaMoneda
+	(moneda igualA: unaMoneda)
+		ifTrue: [ ^ monto ]
+		ifFalse: [ ^ 0 ]
+
+moneda: unaMoneda
+	moneda := unaMoneda  
+
+monto: unMonto
+	monto := unMonto 
+
+montoEquivalenteEn: unaMoneda
+	^ monto * moneda indice / unaMoneda indice.

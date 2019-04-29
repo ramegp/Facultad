@@ -1,0 +1,31 @@
+Object subclass: #TipoDeMoneda
+	instanceVariableNames: 'nombre sigla indice'
+	classVariableNames: ''
+	package: 'Objetos1-Casa de cambio'
+
+actualizarIndiceANuevaBase: indiceBase
+	self indice: self indice / indiceBase
+
+igualA: unaMoneda
+	^ (sigla == unaMoneda sigla) & (indice == unaMoneda indice)
+
+indice
+	^ indice 
+
+indice: unIndice
+
+	indice := unIndice 
+
+initialize
+	self indice: 1.
+
+nombre: unNombre
+
+nombre:= unNombre 
+
+sigla
+	^ sigla
+
+sigla: unSigla
+
+	sigla:= unSigla 

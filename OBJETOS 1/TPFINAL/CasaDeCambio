@@ -1,0 +1,30 @@
+Object subclass: #CasaDeCambio
+	instanceVariableNames: 'monedaBase monedasDisponibles clientes'
+	classVariableNames: ''
+	package: 'Objetos1-Casa de cambio'
+
+
+agregarMoneda: unaMoneda
+	
+	monedasDisponibles add: unaMoneda .
+
+cambioMonedaBase: unaMoneda
+|indiceBaseNuevo|
+	monedaBase := unaMoneda.
+	indiceBaseNuevo := unaMoneda indice.
+	monedasDisponibles do:[:each | each actualizarIndiceANuevaBase: indiceBaseNuevo ]
+
+convertir: unMonto MonedaOrigen: unOrigen AMonedaDestino: unDestino
+	^ unMonto * unOrigen indice / unDestino indice
+
+initialize
+
+	monedasDisponibles := OrderedCollection new.
+	clientes := OrderedCollection new.
+
+monedaBase: unaMoneda
+	
+	monedaBase := unaMoneda
+
+realizarUnaVentaA: unCliente De: transacciones
+	^ true

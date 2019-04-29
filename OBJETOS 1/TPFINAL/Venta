@@ -1,0 +1,25 @@
+Object subclass: #Venta
+	instanceVariableNames: 'fecha transacciones'
+	classVariableNames: ''
+	package: 'Objetos1-Casa de cambio'
+
+agregarTransacciones: unasTransacciones
+	"ver como agregar una collecion dentro de otra"
+
+	transacciones := unasTransacciones
+
+de: unaMoneda Entre: fechaInicio Y: fechaFin
+	(self fechaEntre: fechaInicio Y: fechaFin)
+		ifTrue: [ ^ transacciones inject: 0 into: [ :total :transaccion | total + transaccion cuantoTenesDe: unaMoneda ] ]
+		ifFalse: [ ^ 0 ]
+
+fechaEntre: fechaInicio Y: fechaFin
+	^ fechaInicio <= fecha & fecha <= fechaFin .
+
+initialize
+	transacciones := OrderedCollection new
+
+montoDeVentaEn: unaMoneda
+	"calcula el valor de la venta en un moneda pasada por parametro"
+
+	^ transacciones inject: 0 into: [ :total :transaccion | total + transaccion montoEquivalenteEn: unaMoneda ]
