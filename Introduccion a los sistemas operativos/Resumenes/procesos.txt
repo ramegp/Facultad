@@ -1,0 +1,70 @@
+Procesos
+
+	El so debe intercambiar la ejecucion de los procesos para maximizar la utilizacion del 
+procesador. El SO debe reservar recursos para los procesos, mientras que al mismo tiempo evita
+interbloqueos. El SO da soporte a la comunicacion entre procesos y la creacion de otros procesos(hijos)
+
+	Un sistema operativo puede gestionar la ejecucion de aplicaciones de forma que:
+		los recursos esten disponibles para multiples aplicaciones
+		el procesador fisico se conmite entre multiples procesos, de forma que todos lleguen a ejecutarse
+		el procesador y dispositivos E/S se usen eficientemente
+
+
+	Procesos y Bloques de control de procesos
+	
+	podemos pensar el proceso como codigo de programa, y un conjunto de datos asociados a dicho proceso. el proceso puede caracterizarse por una serie de elementos incluyendo los siguientes:
+	- Identificador: unico asociado al proceso (PID)
+	- Estado: corriendo, ejecucion, etc
+	- Prioridad: nivel de prioridad relativo al resto de los procesos
+	- Contador de programa: direccion de la siguiente intruccion a ejecutar del proceso
+	- Punteros de memoria: punteros al codigo del programa y los datos asociados asi como tambien 
+	cualquier bloque de memoria compartido con otros procesos
+	- Datos de contexto: datos presentes en el registro del procesador cuando el proceso esta
+	corriendo
+	- Informacion de E/S: peticiones de E/S pendientes
+	- Informacion de auditoria: tiempo del procesaro y tiempo de reloj utilizados, limites de
+	tiempo, registros contables,etc.
+	
+	Esta informacion se almacena en una estructura llamada PCB(process control block) contiene suficiente informacion para interrumpir la ejecucion de un proceso y posteriormente restaurarlo. Cuando un proceso se interrumpe, los valores actuales del contador de programa y los registro del procesador se guardan en los campos correspondientes de la pcb.
+
+	Estados de los Procesos
+	
+	Traza de un proceso se le indica a la secuencia (listado) de instrucciones que se ejecutan para dicho proceso. El SO por medio de un dispatcher va cambiando de un proceso en ejecucion a otro, por medio de un interrupcion por clock(time-out) se le acabo el tiempo de uso de la cpu o por otras interrupciones como esperar E/S, de esta forma la cpu no permanece ociosa.
+
+	Modelo de Proceso de dos estados
+	
+	Construyendo un modelo simple, un proceso puede estar ejecutando o no por el procesador. Cuando el so crea un nuevo procesom crea el bloque de control del proceso (PCB) para el nuevo proceso y lo inserta en el sistema en estado no ejecutado; el proceso existe, es conocido por el sistema y queda a la espera de ser ejecutado. Ahora el proceso en ejecucion cuando reciba una interrupcion pasara al estado de no ejecutado. Es por esto que debe haber informacion correspondiente a cada proceso, incluyendo el estado actual y su localizacion en memoria, esto es el bloque de control de programa.
+	Los procesos no ejecutados, se encuentran en una especie de cola a la espera de ser ejecutados. Un proceso que es sacado de la cpu pasa a la cola de espera o si finalizo no se lo vuelve a colocar en ella.
+
+	Creacion y Terminacion de Procesos
+	
+	Creacion: el so construye las estructuras de datos que se usan para manejar el proceso y reserva espacio de direcciones en memoria principal para dicho proceso.
+	Existen 4 eventos comunes que llevan a la creacion de un proceso:
+		Entorno por lotes un proceso se crea como respuesta a una solicitud de trabajo
+		Entorno interactivo un proceso se crea cuando un usuario entra al sistema
+		Un sistema operativo crea a peticion de una aplicacion
+		Puede ser creado por un proceso existente (proceso padre y proceso hijo)
+
+	Terminacion: razones tipicas de terminacion de proceso
+		Finalizacion normal, proceso termino la ejecucion
+		Limite de tiempo excedido
+		Memoria no disponible, necesita mas memoria de la que puede proporcionar el sistema
+		Violaciones de frontera, tratar de acceder a una zona que no tiene permiso
+		Error de proteccion, tratar de usar un recurso que no tiene permiso
+		Error aritmetico, operacion de calculo no permitida
+		Fallo E/S
+		Instruccion no valida
+		Instruccion privilegiada, inteta utilizar un instruccion reservado por el so
+		Terminacion del proceso padre, el so puede automaticamente terminar los hijos
+		Solicitud del proceso padre, padre autoridad para finalizar a los procesos hijos
+
+
+	Modelo de proceso de 5 estados
+	
+	El diagrama de dos estados es ineficiente ya que los procesos que estan en estado no ejecutados pueden estar esperando respuesta de E/S y cuando pasan a estado ejecutado seguir esperando por lo tanto ese tiempo la cpu esta ociosa. De esta forma se crea una division del estado no ejecutado: listo y bloqueado. Los nuevos estados son:
+	-Ejecutado: proceso actualmente en ejecucion.
+	-Listo: proceso que espera para la ejecucion (compite por la cpu)
+	-Bloqueado: proceso que no puede ejecutar hasta que se cumpla un evento o complete E/S
+	-Nuevo: proceso que se acaba de crear y no es admitido en el grupo de los procesos ejecutables por el so. Tipicamente proceso que no ha sido cargado en memoria principal pero que se creo la PCB
+	-Saliente: proceso que ha sido liberado de los procesos ejecutables por el so, ha sido detenido o que ha sido abortado por alguna razon.
+
