@@ -68,3 +68,113 @@ interbloqueos. El SO da soporte a la comunicacion entre procesos y la creacion d
 	-Nuevo: proceso que se acaba de crear y no es admitido en el grupo de los procesos ejecutables por el so. Tipicamente proceso que no ha sido cargado en memoria principal pero que se creo la PCB
 	-Saliente: proceso que ha sido liberado de los procesos ejecutables por el so, ha sido detenido o que ha sido abortado por alguna razon.
 
+	Transiciones entre los estados
+	
+	Null-Nuevo se crea un proceso para ejecutar un programa
+	Nuevo-Listo el SO muevo el proceso a listo, cuando se encuentre preparado para ejecutar. Los 		SO fijan un limite de procesos activo para que no degrade el rendimiento
+	Listo-Ejecutado el planificador selecciona un proceso de la cola de listos.
+	Ejecutado-Saliente finaliza la ejecucion tanto por completado o abortado por algun error.
+	Ejecutado-Listo lo mas habitual es que haya alcanzado el limite de tiempo en cpu, o por alguna 		otra interrupcion, de esta forma como el proceso no finalizo se lo mueve a la cola de listos 		para competir nuevamente por la cpu.
+	Ejecutado-Bloqueado si el proceso solicita algo por lo que debe esperar, E/S solicitar un 		recurso, llamada sistema.
+	Bloqueado-Listo cuando sucede el evento por el que esperaba
+	Listo-Saliente el padre puede terminar un proceso hijo, si el padre termina los procesos hijos 		pueden finalizar
+	Bloqueado-Saliente igual al anterior
+
+	Procesos suspendidos (SWAP)
+	
+	Swapping implica mover parte o todo el proceso de memoria principal al disco. Cuando ningun proceso en memoria principal esta en estado de listo, SO trae uno de los suspendidos o responde a la solicitud de un nuevo proceso. 
+	El swap es una operacion de E/S existe riesgo potencial de que empeore, la E/S en disco es mas rapida que la E/S sobre otros sistemas. Con el swap agregamos un nuevo estado (suspendidos)
+	Cuando el so realiza la operacion de swap, puede admitri un nuevo proceso o traer uno de la cola de suspendidos.
+	Las nuevas transiciones mas importantes son:
+	Bloqueado-Bloqueado/Suspendido: Si no hay procesos listos, al menos uno de los bloqueados se transfiere a disco para hacer espacio para otro proceso que no se encuentra bloqueado, el so puede hacerlo con procesos que esten listos para mejorar el rendimiento
+	Bloqueado/Suspendido-Listo/Suspendido: cuando sucede el evente que estaba esperando. la informacion del estado de un proceso debe ser accesible al so
+	Listo/Suspendido-Listo: cuando no hay procesos en la cola de listos, el so  puede traer de Listos/Suspendidos, adicionalmente puede que uno de los procesos tenga mas prioridad y lo mueva a la cola de listos.
+	Listo-Listo/Suspendido: suspender un proceso listo si se consigue liberar un bloque grande de memoria, el so puede decidir si suspender un proceso de baja prioridad antes que un proceso bloqueado de alta prioridad.
+	Nuevo-Listo/Suspendido Nuevo-Listo: proceso nuevo se puede agregar a la cola de listos o listos/suspendidos si no hay suficiente espacio en memoria
+	Bloqueado/Suspendido-Bloqueado: un proceso en la cola bloqueados/suspendidos con mayor prioridad que los procesos en la cola de listos/suspendidos el so puede creer que el evento que lo bloquead va a ocurrir en breve, de esta forma es razonable traer a memoria el proceso
+	Ejecutado-Listo/Suspendido: normalmente un proceso en ejecucion se mueve a la cola de listos, sin embargo puede expulsarlo porque un proceso de mayor prioridad en la cola de bloqueados/suspendidos acaba de desbloquearse, el so mueve el proceso ejecutado a listos/suspendidos
+	De cualquier estado-Saliente: se completo su ejecucion correctamente o un fallo. los procesos hijos pueden terminar una vez que su padre termina
+
+	Descripcion de procesos
+
+	El so construye y mantiene tablas de informacion sobre cada entidad que gestiona (memoria,E/S,ficheros,procesos)
+	Tablas de memoria se usan para mantener registro de la memoria principal como la secundaria. Incluyen la siguiente informacion:
+		-reserva de memoria principal por parte de los procesos
+		-reserva de memoria secundaria por parte de los procesos
+		-todos los atributos de proteccion que restringe el uso de la memoria principal y virtual de forma que los procesos puedan acceder a ciertas area de memoria compartida
+		-informacion necesaria para manejar la memoria virtual
+	Tablas de E/S para gestionar los dispositivos de E/S y los canales del computador, un dispositivo e E/S puede estar disponible o asignado a un proceso en particular. Si la operacion de E/S se esta realizando, el so necesita conocer el estado de la operacion y la direccion de memoria principal del area usado como fuente o destino de la transferencia de E/S
+	Tablas de ficheros informacion de ficheros, su posicion en almacenamiento secundario su estado actual y sus atributos
+	Tablas de procesos
+
+	Estructuras de control de proceso
+
+	El so debe saber donde estan localizados y conocer los atributos de los procesos para poder manejarlos.
+	Localizacion de los procesos: la imagen del proceso se mantiene como un bloque de memoria continuo, este bloque se mantiene en memoria secundaria. Para que el so pueda gestionarlos una pequeña porcion debe mantenerse en memoria principal. Para ejecutar un proceso la imagen completa debe cargarse en memoria principal o al menos en memoria virtual. De esta forma el so necesita conocer la posicion de memoria. Cuando un proceso se swappea el proceso se transfiere a disco parte de la imagen del proceso permanece en memoria principal, de esta forma el so debe tener registro de que partes de la imagen del proceso se encuentran todavia en memoria principal
+
+	Atributos de proceso: los atributos se encuentran en el bloque de control del proceso BCP, la informacion la podemos agrupar en 3 grupos (informacion del proceso, informacion del estado del procesador, informacion de control del proceso).
+	Informacion del proceso: 
+		- id del proceso 
+		- id del proceso que lo creo 
+		- id usuario
+	
+	Informacion del estado del procesador: 
+		- registros visibles por el usuario (aquellos que pueden hacer referencia por medio de lenguaje de maquina) 
+		- registro de estado y control (contador programa, codigos de condicion signo, acarreo, cero, igual, desbordamiento operacion logica o aritmetica.) 
+		- informacion de estado (incluyen os flags de interrupcions, modo ejecucion) 
+		- puntero de pila
+
+	Informacion de control del proceso:
+		- informacion de estado y planificacion informacion que so necesita para la planificacion los elementos mas comunes son(estado del procesador, prioridad, informacion relativa a planificacion tiempo en espera tiempo en ejecucion, evento por el cual esta esperando)
+		- estructuracion de datos punteros a otros procesos, ejemplo procesos en estado de espera en un nivel de prioridad pueden estar enlazados
+		- comunicacion entre procesos asociar diferenctes flags señales a la comunicacion entre procesos 
+		- privilegios de proceso adquieren privilegios de acuerdo a la memoria a la que van accederr y los tipos de instrucciones que se úeden ejecutar.
+		- gestion de memoria punteros a tablas de segmentos y/o paginas que describen la memoria virtual asignada al proceso
+		- propia de recursos y utilizacion recursos controlador por el proceso, ejemplo ficheros abiertos.
+
+en practicamente todos los so a cada procesos se le asocia un identificador numerico unico que puede er simplemente un indice en la tabla de procesos principal, debe existir una traduccion que permita al so localizar las tablas asosciadas basandose en dicho identificador de proceso.
+
+la informacion de estado de procesos indica los contenidos de los registros del proceso. cuando el proceso es interrumpido toda la informacion de los registros dene salvaguardarse de forma que se pueda restaurar.
+
+informacion de control de proceso, informacion adicional que neesita el so para controlar y coordinar varios procesos activos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
