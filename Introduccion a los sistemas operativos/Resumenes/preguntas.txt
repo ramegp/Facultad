@@ -1,0 +1,60 @@
+¿Que es una traza de instrucciones?
+	Una  traza  de  instrucciones  es  una  secuencia  de  instrucciones  que  se  ejecuta  cuando  un  proceso  está  corriendo.
+
+¿Cuales son los eventos comunes que llevan a la creacion de un proceso?
+	Nuevo  proceso  por  lotes:  El  SO  dispone  de  un  flujo  de  control  de  lotes  de  trabajos,    habitualmente una cinta o en disco. Cuando el SO está listo para procesar un nuevo trabajo, leerá la siguiente secuencia de mandatos de control de trabajos. 
+	Sesión interactiva: Un usuario entra en el sistema desde una Terminal. 
+	Creado por el SO para proporcionar un servicio: El SO puede crear un proceso para realizar una  función  en  representación  de  un  programa  de  usuario,  sin  que  el  usuario  tenga  que  esperar (ej. proceso de control de impresión). 
+	Creado por un proceso existente: por motivos de modularidad o para explotar el paralelismo, un programa de usuario puede ordenar la creación de un número de procesos
+
+¿Que significa la expulsion de un proceso?
+	La expulsión de un proceso significa la reclamación de un recurso por parte de un proceso antes de que el proceso que la poseía finalice su uso. En este caso, el recurso es el procesador, lo que quiere decir que el proceso puede estar ejecutándose pero es expulsado por otro proceso que va a entrar a ejecutar.
+
+¿Que es el swapping y cual es su objetivo?
+	Swapping  es  cuando  el  SO  intercambia  uno  de  los  procesos  bloqueados  en  disco,  en  la  cola  de  suspendidos  por  uno  de  los  procesos  en  memoria  principal  se  encuentra  en  el  estado  Listo.  El  objetivo  es  mejorar el rendimiento de memoria.
+
+Indique cuatro caracteristicas de un proceso suspendido
+	1.Un proceso que no esta disponible de inmediato para su ejecución. 
+	
+	2.El  proceso  puede  estar  o  no  en  espera  de  un  evento,  si  es  así,  la  condición  de  bloqueado  es  independiente  de  la  condición  de  estar  suspendido,  y  si  sucede  un  evento  que  lo  bloque,  eso  no  habilita al proceso para su ejecución inmediatamente. 
+	
+	3.El proceso fue puesto en el estado suspendido por un agente: bien el mismo, bien el proceso padre o bien el sistema operativo, con el fin de impedir su ejecución. 
+	
+	4.El proceso no puede ser recuperado de este estado hasta que el agente así lo ordene. 
+
+¿Para que tipo de entidades el sistema operativo mantiene tablas de informacion por motivos de gestion?
+	El sistema operativo mantiene tablas de información de las siguientes entidades: Memoria, Dispositivos, Ficheros y Procesos
+
+Indique 3 categorias generales que hay en el bloque de control de proceso
+	1)Identificación del proceso
+		- Identificadores: 
+			- De Proceso 
+			- De proceso padre 
+			- De usuario 		
+	2)Información del estado del procesador
+		- Registros visibles por el usuario 
+		- Registros de estado y control 
+		- Puntero Pila 
+	3)Información de control del proceso.
+		- Información de estado y planificación 
+		- Comunicación entre procesos 
+		- Privilegios del proceso 
+		- Gestión de memoria 
+		- Propios de recurso y utilización
+
+
+¿Por que se necesita dos modos (usuario y nucleo)?
+	La razón por la que se usan dos modos se debe porque es necesario proteger al sistema operativo y a las tablas importantes del mismo, como los bloques de control de procesos, de las injerencias de los programas de  usuario. En el modo de núcleo, el software tiene control completo del procesador y de todas sus instrucciones, registros y memoria. Este nivel de control no es necesario y por seguridad, tampoco conviene para los programas de usuario.
+
+¿Cuales son los pasos del sistema operativo para la creacion de un proceso?
+	1. Asignar un identificador de proceso único al proceso.
+	2. Reservar espacio para el proceso.
+	3. Iniciar el bloque de control del proceso.
+	4. Establecer los enlaces apropiados.
+	5. Crear o expandir otras estructuras de datos.
+
+¿Cual es la diferencia entre interrupcion y trap?
+	La diferencia entre una interrupción y Trap es que una interrupción es externa a la ejecución de la instrucción en curso, mientras que el cepo es asociado con la ejecución de la instrucción en curso.
+
+¿Diferencia entre cambio de modo y cambio de proceso?
+	Un  cambio  de  proceso  ocurre  cuando  se  interrumpe  un  proceso  que  se  está  ejecutando  y  entonces  el  sistema  operativo  asigna  a  otro  proceso  al  estado  de  Ejecución  y pasa  el  control  ha  dicho  proceso.    El  cambio  de  modo  ocurre  para  que  el  código  que  procesa  la  interrupción  pueda  incluir  instrucciones  privilegiadas.
