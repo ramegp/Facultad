@@ -1,0 +1,56 @@
+###   Practica 3
+3) 
+mkdir Practica-shell-script
+---------------------------
+cd Practica-shell-script  - touch Practica-shell-script/mostrar.sh
+touch mostrar.sh	  -----------------------------------------
+---------------------------
+
+chmod +x mostrar.sh
+
+x-----x-----x-----------------------------------x
+| rwx |  7  | Lectura, escritura y ejecución    |
+| rw- |  6  | Lectura, escritura        |
+| r-x |  5  | Lectura y ejecución       |
+| r-- |  4  | Lectura               |
+| -wx |  3  | Escritura y ejecución             |
+| -w- |  2  | Escritura                         |
+| --x |  1  | Ejecución             |
+| --- |  0  | Sin permisos          |
+x-----x-----x-----------------------------------x
+
+4)
+
+$*
+
+Se expande a todos los parámetros posicionales desde el 1. Si se usa dentro de comillas dobles, se expande como una única palabra formada por los parámetros posicionales separados por el primer carácter de la variable IFS (si la variable IFS no está definida, se usa el espacio como separador y si está definida a la cadena nula, los campos se concatenan).
+
+$@
+
+Se expande a todos los parámetros posicionales desde el 1, como campos separados, incluso aunque se use dentro de comillas dobles.
+
+$0
+
+Nombre del shell o shell-script que se está ejecutando.
+
+$- (guion)
+
+Opciones actuales del shell (modificables con el comando set). Consulte las opciones disponibles con el comando man dash .
+
+$#
+
+Nº de argumentos pasados al script (no incluye el nombre del script).
+
+$?
+
+Valor devuelto por el último comando, script, función o sentencia de control invocado. Recuerde que, en general, cualquier comando devuelve un valor. Usualmente, cuando un comando encuentra un error devuelve un valor distinto de cero.
+
+$$
+
+PID del proceso shell que está interpretando el script.
+
+$!
+
+PID del último proceso puesto en segundo plano
+
+
