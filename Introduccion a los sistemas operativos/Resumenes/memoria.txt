@@ -1,0 +1,41 @@
+
+----------------------------------------   Memoria  -----------------------------------------------
+
+En un sistema multiprogramado, la memoria principal disponible se comparte generalmente entre va-
+rios procesos. sería bueno poder intercambiar procesos en la memoria principal para maximizar la utilización del procesador, proporcionando un gran número de procesos para la ejecución. podría ser
+necesario reubicar el proceso a un área de memoria diferente.
+
+Proteccion de la memoria:
+Cada proceso debe protegerse contra interferencias no deseadas por parte de otros procesos. El procesador debe ser capaz de abortar tales instrucciones en el punto de ejecución. sólo es posible evaluar la permisibilidad de una referencia (acceso a datos o salto) en tiempo de ejecución de la instrucción que realiza dicha referencia
+
+Comparticion de la memoria:
+Cualquier mecanismo de proteccion debe tener la flexibiblidad e permitri a varios procesos acceder a la misma porcion de memoria principal. El sistema de gestion de memoria debe permitir el acceso controlado a areas de memoria compratidas sin comprometer la proteccion.
+
+Organizacion logica de la memoria:
+
+
+Organizacion fisica:
+Como se discute en la Sección 1.5, la memoria del computador se organiza en al menos dos niveles,
+conocidos como memoria principal y memoria secundaria. La memoria principal proporciona acceso rápido a un coste relativamente alto. Adicionalmente, la memoria principal es volátil; es decir, no
+proporciona almacenamiento permanente. La memoria secundaria es más lenta y más barata que la
+memoria principal y normalmente no es volátil. Por tanto, la memoria secundaria de larga capacidad
+puede proporcionar almacenamiento para programas y datos a largo plazo, mientras que una memoria
+principal más pequeña contiene programas y datos actualmente en uso
+
+PARTICIONAMIENTO DE LA MEMORIA
+
+Particionamiento fijo:
+La memoria principal se divide en particiones estáticas en tiempo de generación del sistema. Un proceso se puede cargar en una partición con igual o superior tamaño.
+	Ventaja: sensilla de implemetnar poca sobrecarga para el S.O
+	Desventaja uso ineficiente de la memoria, debido a la fragmentacion interna, debe fijarse numero maximo de procesos activos.
+Existen dos dificultades en el uso de particiones fijas del mismo tamaño:
+•Un programa podría ser demasiado grande para caber en una partición. En este caso, el programador debe diseñar el programa con el uso de overlays, de forma que sólo se necesite una porción del programa en memoria principal en un momento determinado. Cuando se necesita un módulo que no está presente, el programa de usuario debe cargar dicho módulo en la partición del programa, superponiéndolo (overlaying) a cualquier programa o datos que haya allí.
+• La utilización de la memoria principal es extremadamente ineficiente. Cualquier programa, sin importar lo pequeño que sea, ocupa una partición entera. En el ejemplo, podría haber un programa cuya longitud es menor que 2 Mbytes; ocuparía una partición de 8 Mbytes cuando se lleva a la memoria. Este fenómeno, en el cual hay espacio interno malgastado debido al hecho de que el bloque de datos cargado es menor que la partición, se conoce con el nombre de frag-
+mentación interna.
+Estos problemas se pueden mejorar, no resolver, utilizando particiones de tamaño diferentes.
+
+Algoritmo de ubicacion (pag 314)
+Si todas las particiones se encuentran
+ocupadas por procesos que no están listos para ejecutar, entonces uno de dichos procesos debe llevar-
+se a disco para dejar espacio para un nuevo proceso. Cuál de los procesos se lleva a disco es una deci-
+sión de planificación

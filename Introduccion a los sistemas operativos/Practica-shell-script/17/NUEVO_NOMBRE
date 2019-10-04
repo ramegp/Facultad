@@ -1,0 +1,6 @@
+#!/bin/bash
+for archivo in $(ls -C)
+do
+	nuevo_nombre=$(echo $archivo | tr '[:upper:][:lower:]' '[:lower:][:upper:]' | tr -d "aA")
+	mv $archivo nuevo_nombre
+done
