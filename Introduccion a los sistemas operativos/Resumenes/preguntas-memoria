@@ -1,0 +1,435 @@
+-----------------------------------------------Memoria--------------------------------------------------- 
+
+7.2 ¿Por qué es deseable la capacidad de reubicar procesos?
+
+ 
+
+R: Al permitir ubicar el proceso en un área distinta de memoria, el sistema operativo puede utilizar ese espacio que se libera.
+
+ 
+
+7.3 ¿Por qué no es posible forzar la protección de memoria en tiempo de compilación?
+
+ 
+
+R: La protección de memoria es realizada por el procesador (hardware) y no el sistema operativo (software).
+
+ 
+
+7.4 ¿Qué razones existen para permitir que dos o más procesos tener accedan a una misma región de memoria?
+
+ 
+
+R: Cualquier mecanismo de protección que se implemente debe tener la flexibilidad de permitir el acceso de varios procesos a la misma zona de la memoria principal. Es decir, permitir a cada proceso que acceda a la misma copia del programa, en lugar de tener cada uno de su propia copia aparte.
+
+ 
+
+7.5 En un esquema de partición fijo, ¿Cuáles son las ventajas de usar particiones de distinto tamaño?
+
+ 
+
+R: Las ventajas de usar particiones de distinto tamaño son:
+
+Ø      Sencillo de implementar.
+
+Ø      Poca sobrecarga del sistema operativo.
+
+ 
+
+7.6 ¿Cuál es la diferencia entre la fragmentación interna y la externa?
+
+ 
+
+R: Diferencias:
+
+Ø      Fragmentación Interna: se produce cuando la memoria se divide en particiones de tamaño fijo. Si un bloque de datos es asignado a una o más particiones, puede haber un espacio desaprovechado en la última partición.
+
+Ø      Fragmentación Externa: se produce cuando la memoria se divide en particiones de tamaño variable correspondientes a los bloques de datos asignados de la memoria (huecos entre las partes ocupadas de la memoria).
+
+ 
+
+7.7 ¿Cuáles son las distinciones entre direcciones lógicas, relativas y físicas?
+
+ 
+
+R: Diferencias:
+
+Ø      Direcciones Lógicas: referencia a una posición de memoria independiente de la asignación actual de datos de la memoria.
+
+Ø      Direcciones Relativas: dirección calculada como un desplazamiento a partir de una dirección de base.
+
+Ø      Direcciones Físicas: posición absoluta de una unidad de datos en la memoria.
+
+ 
+
+7.8 ¿Cuál es la diferencia entre una página y un marco?
+
+ 
+
+R: Diferencias:
+
+Ø      Página: es el almacenamiento virtual, un bloque de longitud fija que dispone de una dirección virtual y que se transfiere como una unidad entre la memoria principal y la memoria secundaria.
+
+Ø      Marco de Página: bloque de memoria principal contiguo y de longitud fija que se usa para contener una página.
+
+ 
+
+7.9 ¿Cuál es la diferencia entre una pagina y un segmento?
+
+ 
+
+R: Diferencias:
+
+ 
+
+Ø      Página: es el almacenamiento virtual, un bloque de longitud fija que dispone de una dirección virtual y que se transfiere como una unidad entre la memoria principal y la memoria secundaria.
+
+Ø      Segmento: en la memoria virtual, un bloque que tiene una dirección virtual. Los bloques de un programa pueden ser de longitud desigual y pueden ser incluso de longitud variable dinámicamente.
+
+ 
+
+ 
+
+8.1 ¿Cuál es la diferencia entre paginación sencilla y paginación con memoria virtual?
+
+ 
+
+R: La paginación es la transferencia de paginas entre la memoria principal y la memoria secundaria, en la paginación simple todo es transparente al programador, elimina la fragmentación externa y aprovecha la memoria principal de forma eficiente y en la paginación con memoria se crea un dirección virtual que se emplea como índice de las tablas para buscar las direcciones de la memoria principal.
+
+ 
+
+8.2 Explique la trasiego o trashing
+
+ 
+
+R: Trasiego es un fenómeno de los esquemas de memoria virtual en el que el procesador pasa la mayor parte del tiempo intercambiando trozos de memoria en vez de ejecutar instrucciones.
+
+ 
+
+8.3 ¿Por qué es el principio de proximidad de referencia es crucial para el uso de la memoria virtual?
+
+ 
+
+R: El principio de proximidad afirma que las referencias a los datos y al programa dentro de un proceso tienden a agruparse. Por lo tanto, es válida la suposición de que, durante cortos periodos de tiempo, se necesitaran solo unos pocos fragmentos de un proceso. Además seria posible hacer predicciones inteligentes obre que fragmentos de un proceso se necesitaran en un futuro cercano y así evitar la hiperpaginación.
+
+ 
+
+8.4 ¿Qué elementos se encuentran típicamente en la entrada de tabla de páginas? Defina brevemente cada elemento.
+
+ 
+
+R: Elementos que se encuentran en una entrada de tabla de páginas:
+
+Ø      Número de Página: de la dirección virtual que se emplea como índice en esa tabla para buscar el marco correspondiente.
+
+Ø      Desplazamiento: se combina con el número de página para generar la dirección real deseada.
+
+ 
+
+8.5 ¿Cuál es el propósito dela TLB?
+
+ 
+
+R: El buffer de traducción adelantada(TLB) es un caché especial, con el propósito de reducir la frecuencia de los accesos a la memoria principal para recuperar entradas de la tabla de páginas.
+
+8.6 Defina brevemente las alternativas en políticas recuperación
+
+ 
+
+R: Alternativas en políticas de recuperación:
+
+Ø      Paginación por Demanda: transferencia de una pagina de memoria secundaria hacia la memoria principal en el momento en que se necesite.
+
+Ø      Paginación Previa: Recuperación de paginas distintas de la solicitada por un fallo de pagina. (la esperanza en que se necesiten páginas adicionales en el futuro cercano, sin aumentar la E/S con el disco).
+
+ 
+
+8.7 ¿Cuál es la diferencia entre gestión del conjunto residente y política de reemplazo de pagina?
+
+ 
+
+R: Diferencias:
+
+La gestión del conjunto residente hará referencia a:
+
+Ø      Número de marcos de página a asignar a cada proceso activo.
+
+Ø      Si el conjunto de paginas a considerar para el reemplazo debe limitarse a las del proceso que provoco el fallo de pagina o abarcar todos los marcos de pagina situados en la memoria principal.
+
+La política de reemplazo de página hará referencia a:
+
+Ø      De entre el conjunto de páginas consideradas, cual es la página especifica que debe elegirse para el reemplazo.
+
+ 
+
+8.8 ¿Cuál es la relación entre los algoritmos de reemplazo de paginas FIFO y del reloj?
+
+ 
+
+R: La política FIFO es muy simple de implementar, pero su rendimiento es relativamente pobre. A lo largo de los años los diseñadores han probado una serie de algoritmos para aproximarse al rendimiento de la LRU sin introducir mucha sobrecarga, la mayoría de esos algoritmos son variantes de un esquema denominado política del reloj.
+
+ 
+
+8.9 ¿Cuál es el cometido del buffering de paginas?
+
+ 
+
+R: Ventajas:
+
+Ø      Mejora el rendimiento de la paginación.
+
+Ø      Permite el uso de una política de reemplazo de paginas mas sencilla
+
+ 
+
+8.10 ¿Por qué no es posible combinar una política de reemplazo global y una política de asignación fija?
+
+ 
+
+R: No es posible combinar por al tamaño de cache y la menor cercanía en las aplicaciones.
+
+ 
+
+8.11 ¿Cuál es la diferencia entre un conjunto residente y un conjunto de trabajo?
+
+ 
+
+R: Diferencias:
+
+Ø      Conjunto Residente: Parte de un proceso que esta en la memoria principal en un momento dado.
+
+Ø      Conjunto de Trabajo: Conjunto de trabajo W con parámetro ∆ de un proceso en el instante virtual t es el conjunto de páginas de dicho proceso a las que se ha hecho referencia en las últimas ∆ unidades de tiempo.
+
+ 
+
+8.12 ¿Cuál es la diferencia entre limpieza por demanda y limpieza previo?
+
+ 
+
+R: Diferencias:
+
+Ø      Limpieza por Demanda: una página se escribirá en la memoria secundaria solo cuando haya sido elegida para reemplazarse.
+
+Ø      Limpieza Previa: escribe las páginas modificadas antes de que se necesiten sus marcos, de forma que las páginas puedan escribirse por lotes. 
+---------------------------------------------------------------------------------------------------------
+7.2 Por qué es deseable la capacidad para reubicar procesos?
+
+
+Al reubicar el proceso en otra área se puede utilizar el espacio que quedo libre.
+
+
+7.3 Por qué no es posible forzar la protección de la memoria en tiempo de compilación?
+
+Porque lo realiza el procesador y debido a eso no se puede realizar.
+
+
+7.4 Qué razones existen para permitir que dos o más procesos accedan a una misma región de la memoria?
+
+
+
+Para compartir datos.
+
+
+7.5 En un esquema de partición fijo, Cuáles son las ventajas de utilizar particiones de distinto tamaño
+
+
+
+    Sencilla de implementar
+
+
+
+    No sobrecarga el SO
+
+
+7.6 Cuál es la diferencia entre la fragmentación interna y la externa
+
+
+
+    Fragmentación interna cuando la memoria se divide en particiones de tamaño fijo.
+
+
+    Fragmentación externa se divide en particiones de tamaño variable.
+
+
+7.7 Cuáles son las diferencias entre direcciones lógicas, relativas y físicas
+
+
+
+    Direcciones lógicas son las direcciones que utilizan los programas.
+
+
+    Direcciones relativas son direcciones calculadas.
+
+
+    Direcciones físicas es la dirección final de un dato.
+
+
+7.8 Cuál es la diferencia entre una página y un marco?
+
+
+
+    Pagina es la forma de guardar información de manera virtual.
+
+
+    Marco contiene una página y es un bloque de memoria.
+
+
+7.9 Cuál es la diferencia entre página y segmento
+
+
+
+    Pagina es la forma de guardar información de manera virtual.
+
+
+    Segmento en la memoria virtual, un bloque que tiene una dirección virtual. 
+
+
+8.1 Cuál es la diferencia entre paginación sencilla y la paginación con memoria virtual
+
+
+La diferencia es que en la paginación simple, todas las páginas de un proceso tienen que estar en la memoria principal para que el proceso se ejecute, a menos que se use superposición; y en la paginación con memoria virtual, no lo necesitan estar todas
+
+
+8.2 Explique la hiperpaginación
+
+
+La hiperpaginación es un fenómeno de los esquemas de memoria virtual en el que el procesador pasa la mayor parte del tiempo intercambiando trozos de memoria en vez de ejecutar instrucciones. Las formas de evitar la hiperpaginación fueron unas de las áreas de investigación más importantes de los años 70 y llevaron a un buen número de algoritmos complejos pero efectivos. En esencia, el sistema operativo intenta adivinar, en función de la historia reciente, qué fragmentos se usarán con menor probabilidad en un futuro próximo.
+
+
+8.3 Porque el principio de proximidad de referencia es crucial para el uso de la memoria virtual?
+
+
+Porque afirma que las referencias a los datos y al programa dentro de un proceso tienden a agruparse
+
+
+8.4 Qué elementos se encuentran, normalmente, en una entrada de tabla de páginas Defina brevemente cada uno de ellos
+
+
+
+
+    Número de marco de página: Se refiere a un marco en la memoria principal.
+
+
+    Edad: Indica cuánto tiempo ha estado la página en la memoria sin ser referenciada. La longitud y el contenido de este campo son dependientes del procesador.
+
+
+    Copia en escritura: Activo cuando más de un proceso comparte la página. Si uno de los procesos escribe en la página, antes debe hacerse una copia de la página para todos los demás procesos que la comparten. Esta característica permite aplazar la operación de copia hasta que sea necesario y evitarla en caso de que no lo sea.
+
+
+    Modificación: Indica que la página ha sido modificada.
+
+
+    Referencia: Indica que la página ha sido referenciada. Este bit se pone a cero cuando la página se carga por primera vez y puede ser restaurado periódicamente por el algoritmo de reemplazo de página.
+
+
+    Validez: Indica que la página está en la memoria principal.
+
+
+    Protección: Indica si está permitida la operación de escritura.
+
+
+8.5 Cuál es el propósito del buffer de traducción adelantada
+
+El buffer de traducción adelantada se usa para evitar que en un esquema sencillo de memoria virtual exista el efecto de doblar el tiempo de acceso a la memoria, uno para obtener la entrada de la tabla de páginas correspondiente y otro para obtener el dato deseado.
+
+8.6 Defina brevemente las alternativas en políticas de lectura de páginas
+
+
+
+    Paginación por demanda: Consiste en la transferencia de una página de memoria secundaria hacia la memoria principal en el momento en que se necesite.
+
+
+    Paginación previa: Consiste en la recuperación de páginas distintas de la solicitada por un fallo de página
+
+
+8.7 Cuál es la diferencia entre gestión del conjunto residente y política de reemplazo de pagina
+
+En la gestión del conjunto residente, el sistema operativo debe decidir cuánta memoria principal ha de asignar a un proceso en particular cuando se carga. En la política de reemplazo de páginas, cuando la memoria está llena debe tomarse la decisión de qué página o páginas serán reemplazadas.
+
+8.8 Cuál es la relación entre los algoritmos de reemplazo de paginas FIFO y del reloj
+
+La relación es que tratan los marcos asignados a un proceso como un buffer circular y las páginas se suprimen de la memoria según la técnica de turno rotatorio.
+
+8.9 Cuál es la ventaja del almacenamiento intermedio de páginas
+
+
+
+    Mejora el rendimiento de la paginación.
+
+
+    Permite el uso de una política de reemplazo de paginas mas sencilla
+
+
+8.10 Por qué no es posible combinar una política de reemplazo global y una política de asignación fija
+
+Con una política de asignación fija, cada vez que se produce un fallo de página en la ejecución de un proceso, se debe reemplazar una de las páginas de dicho proceso por la página que se necesite. Una política de reemplazo global se considera todas las páginas de la memoria como candidatas a reemplazar, independientemente del proceso particular al que pertenezcan.
+
+8.11Cuál es la diferencia entre un conjunto residente y un conjunto de trabajo
+
+Un conjunto de trabajo es el conjunto de páginas a las que el proceso en un instante virtual t y con un parámetro, ha hecho referencia en las últimas A unidades de tiempo virtual. Un conjunto residente es parte de un proceso que está en la memoria principal en un momento dado.
+
+8.12 ¿Cuál es la diferencia entre vaciado por demanda y la limpieza adelantada?
+
+En vaciado por demanda, una página se escribirá en la memoria secundaria sólo cuando haya sido elegida para reemplazarse; y en una política de vaciado previo, se escriben las páginas modificadas antes de que se necesiten sus marcos, de forma que las páginas puedan escribirse por lotes.
+
+Problemas:
+
+8.4 Un proceso tiene cuatro marcos reservados para el uso (los siguientes números están en formato decimal, y todas las numeraciones comienzan desde 0). La siguiente tabla muestra el instante de tiempo en el que se cargó la ultima página en cada marco, el instante de tiempo del ultimo acceso a cada página, el numero de página virtual, los bits de referencia (R) y modificada (M) para cada uno de los marcos de página (los instantes de tiempo están expresados en ticks de reloj desde el comienzo del proceso).
+
+
+
+
+
+Se ha producido un fallo en la página virtual 4 en el instante 164. ¿Qué marco de pagina reemplazara su contenido para cada una de las siguientes políticas de gestión de memoria? Explíquese por qué en cada uno de los casos.
+a). FIFO
+b). LRU
+C. Reloj
+d). Óptimo (usar la serie cadena de referencia).
+e). Cuantos fallos de pagina ocurrirían si se usase la política del conjunto de trabajo con LRU tomando una ventana de tamaño 4 en lugar de asignación fija?
+
+a) FIFO reemplazará 2 (porque reemplaza el primero en entrar)
+b) LRU reemplazará 2 (porque reemplaza el que ha sido usada menos recientemente)
+c) Reloj reemplazará 1 (porque reemplaza el que tiene el primer bit de referencia 0)
+d) Óptimo reemplazará 3 (porque reemplaza el que tiene la mayor referencia)
+e)
+
+
+
+
+8.5 Un proceso hace referencia a cinco páginas, A, B, C, D, y E, en el siguiente orden:
+A; B; C; D; A; B; E; A; B; C; D; E
+
+Asuma que el algoritmo de reemplazo es FIFO y encuentre el número de transferencias de páginas durante la anterior secuencia de referencias, que comienza con la memoria principal vacía con 3 marcos de página. Repítase para 4 marcos de página.
+
+Logaritmo FIFO:
+(3 marcos)
+
+
+
+
+
+
+
+8.6 Un proceso contiene 8 páginas virtuales en el disco y se asignan con una ubicación fija de cuatro marcos de página en la memoria principal. La traza de paginas es la siguiente:
+1, 0, 2, 2, 1, 7, 6, 7, 0, 1, 2, 0, 3, 0, 4, 5, 1, 5, 2, 4, 5, 6, 7, 6, 7, 2, 4, 2, 7, 3, 3, 2, 3
+
+a). Muéstrese la sucesión de páginas residentes en los cuatro marcos usando la política de reemplazo LRU. Calcule la tasa de aciertos en la memoria principal. Considérese que los marcos están inicialmente vacíos.
+b). Repita el apartado (a) para la política de reemplazo FIFO.
+c). Compare las dos tasas de acierto y comente la efectividad del uso FIFO como aproximación LRU con respecto a esta serie particular.
+
+a. LRU
+
+
+
+(13 FALLOS)
+
+b. FIFO
+
+
+
+
+(13 FALLOS)
+
+c. Ocurren 13 Fallos. 
+
+---------------------------------------------------------------------------------------------------------

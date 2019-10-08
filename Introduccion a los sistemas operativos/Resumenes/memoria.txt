@@ -22,7 +22,7 @@ memoria principal y normalmente no es volátil. Por tanto, la memoria secundaria
 puede proporcionar almacenamiento para programas y datos a largo plazo, mientras que una memoria
 principal más pequeña contiene programas y datos actualmente en uso
 
-PARTICIONAMIENTO DE LA MEMORIA
+#PARTICIONAMIENTO DE LA MEMORIA
 
 Particionamiento fijo:
 La memoria principal se divide en particiones estáticas en tiempo de generación del sistema. Un proceso se puede cargar en una partición con igual o superior tamaño.
@@ -35,7 +35,93 @@ mentación interna.
 Estos problemas se pueden mejorar, no resolver, utilizando particiones de tamaño diferentes.
 
 Algoritmo de ubicacion (pag 314)
-Si todas las particiones se encuentran
-ocupadas por procesos que no están listos para ejecutar, entonces uno de dichos procesos debe llevar-
-se a disco para dejar espacio para un nuevo proceso. Cuál de los procesos se lleva a disco es una deci-
-sión de planificación
+Si todas las particiones se encuentran ocupadas por procesos que no están listos para ejecutar, entonces uno de dichos procesos debe llevar se a disco para dejar espacio para un nuevo proceso. Cuál de los procesos se lleva a disco es una decisión de planificación.
+Con particiones de diferentes tamaños hay dos formas posibles de asignar. La forma más sencilla consiste en asignar cada proceso a la partición más pequeña dentro de la cual cabe. En este caso, se necesita una cola de planificación para cada partición, que mantenga procesos en disco destinados a dicha partición. La ventaja de esta técnica es que los procesos siempre se asignan de tal forma que se minimiza la fragmentación interna.
+una técnica óptima sería emplear una única cola para todos los procesos (Figura 7.3b). En el momento de cargar un proceso en la memoria principal, se selecciona la partición más pequeña disponible que puede albergar dicho proceso. Si todas las particiones están ocupadas, se debe llevar a cabo una decisión para enviar a swap a algún proceso. Tiene preferencia a la hora de ser expulsado a disco el proceso que ocupe la partición más pequeña que pueda albergar al proceso entrante. Es también posible considerar otros factores, como la prioridad o una preferencia por expulsar a disco procesos bloqueados frente a procesos listos.
+El uso de particionamiento fijo es casi desconocido hoy en día. Un ejemplo de un sistema operativo exitoso que sí utilizó esta técnica fue un sistema operativo de los primeros mainframes de IBM, el sistema operativo OS/MFT (Multiprogramming with a Fixed Number of Tasks; Multiprogramado con un número fijo de tareas).
+
+Particionamiento dinamico:
+las particiones son de longitud y número variable. Cuando se lleva un proceso a la memoria principal, se le asigna exactamente tanta memoria como requiera y no más. A medida que se van swapeando los procesos y entrar otros procesos que ocupan menos memoria, comienza a quedar espacios sin utilizar. Con el paso del tiempo la memoria se fragmenta cada vez mas (fragmentacion externa)
+Una tecnica para eliminar la fragmentacion es la compactacion: de vez en cuando el S.O desplaza los procesos en memoria para que queden contiguos. La desventaja de la compactacion es que consume tiempo y malgasta tiempo de procesador (permanece ocioso, con respecto a los procesos de usuario)
+
+Algoritmo de ubicacion:
+Tres algoritmos de colocación que pueden considerarse son mejor-ajuste (best-fit), primer-ajuste (first-fit) y siguiente-ajuste (next-fit). Todos, por supuesto, están limitados a escoger entre los bloques libres de la memoria principal que son iguales o más grandes que el proceso que va a llevarse a la memoria. Mejor-ajuste escoge el bloque más cercano en tamaño a la petición. Primer-ajuste comienza a analizar la memoria desde el principio y escoge el primer bloque disponible que sea suficientemente grande. Siguiente-ajuste comienza a analizar la memoria desde la última colocación y elige el siguiente bloque disponible que sea suficientemente grande.
+
+Algoritmo de reemplazamiento
+
+Reubicacion 
+
+
+Paginacion:
+La memoria principal se divide en porciones de tamaño fijo relativamente pequeños y que cada proceso tambien se divide en porciones pequeñas del mismo tamaño. A las porciones del procesos se las conoce como paginas, se les asigna porciones de memoria conocidas como marcos o marcos de paginas. Espacio de memoria malgastado por cada proceso corresponde a una fraccion de la ultima pagina de un proceso. (No existe fragmentacion externa)
+El S.O mantiene una tabla de paginas por c/ proceso, esta muestra la ubicacion del marco por cada pagina del proceso. Dentro del programa cada direccion logica esta formada por un numero de pagina y un desplazamiento dentro de ella.
+Por tanto vemos que la paginación simple, tal y como se describe aquí, es similar al particionamiento fijo. Las diferencias son que, con la paginación, las particiones son bastante pequeñas; un programa podría ocupar más de una partición; y dichas particiones no necesitan ser contiguas
+
+Segmentacion:
+Un programa de usuario se divide en segmentos; hay un tamaño de segmento maximo. Como en el caso de la paginacion, una direccion logica utilizando segmentacion esta compuesta por dos partes, numeros de segmento y un desplazamiento.
+Debido a que no tiene tamaño fijo la segmentacion es parecida al particionamiento dinamico. Se necesita para la ejecucion que todos los segmentos se carguen. La diferencia comparada con el particionamiento dinamico, es que con la segmentacion un programa podria ocupar mas de una particion, y estas no necesitan ser contiguas. La segmentacion elimina la fragmentacion interna, pero como en particionamiento dinamico sufre fragmetnacion externa.
+Una consecuencia es que no hay una relacion simple entre direcciones logicas y direccione fisicas. Un esquema de segmentacion sencillo haria uso de una tabla de segmentos por cada proceso y una lista de bloques libres de memoria principal. C/entrada a la tabla de segmentos tendria que proporcionar la direccion inicial de la memoria principal correspondiente al segmento. La entrada tambien deberia proporcionar la longitud del segmento para asegurar que no se utilicen direccion no validas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
