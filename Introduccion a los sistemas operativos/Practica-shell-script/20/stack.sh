@@ -40,14 +40,13 @@ pop(){
 
 #Inicializo stack
 STACK=()
-GREEN='\033[0;32m'
 #Mensaje de información de comandos
 bienvenida
 #Bucle de opciones
 while true;
 do
 	#Comienza el input para el usuario
-	echo -ne "${GREEN}>> "
+    echo -ne "===>> "
 	read comando
 	#Obtengo la función que elige el usuario
 	funcion=$(echo $comando | cut -d":" -f1)
